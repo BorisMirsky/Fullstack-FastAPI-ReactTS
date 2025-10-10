@@ -5,6 +5,7 @@ import React from 'react';
 import styles from "./page.module.css";
 //import { Button } from '@material-ui/core';
 //import { Button } from '@mui/material';
+import Button from '@material-ui/core/Button';
 import { useRouter } from 'next/navigation';
 
 
@@ -26,12 +27,12 @@ export default function Home() {
                   <br />
                   <p>
 
-                      <button
+                      <Button
                           onClick={() => router.push('/all_employees')}
                           style={{ flex: 1 }}
                       >
                           Go
-                      </button>
+                      </Button>
                   </p>
         </div>
       </main>
