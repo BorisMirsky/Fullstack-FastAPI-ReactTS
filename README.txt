@@ -2,19 +2,24 @@
 Убедиться, что стоят 2 пакета:
     pip install fastapi
     pip install "uvicorn[standard]"
-Ставить в виртуальное окружение
+Если нет, то ставить в виртуальное окружение (см ниже)
 
 
-### run ###
         Запустить виртуальное окружение
-cd C:\Users\Alexander\source\Fullstack-FastAPI-ReactTS\backend\my_virt\Scripts
+Fullstack-FastAPI-ReactTS\backend\my_virt\Scripts
 activate
 
+
          Запуск локального сервера.
-Перейти в папку проекта 'app', 
+Перейти в папку проекта 'Fullstack-FastAPI-ReactTS\backend\app', 
 выполнить в терминале команду 'uvicorn main:app --reload'
 
-curl -X GET -H "Content-Type: application/json" "http://127.0.0.1:8000/api/allEmployees" 
+
+         Запуск фронтенда
+Переход в папку Fullstack-FastAPI-ReactTS\frontend.
+Вызов консоли разработчика "ctrl + `". Выполнить команду 'npm run dev'
 
 
-npm install --legacy-peer-deps @material-ui/core
+На 10.10 готово 10%.
+
+
