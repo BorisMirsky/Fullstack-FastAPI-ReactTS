@@ -27,14 +27,32 @@ def get_db():
 @app.get("/")
 def root():
     #return FileResponse("public/index.html")
-    return("___ups___")
+    return"Start page"
 
 
 
 @app.get("/api/allEmployees")
 def get_all_employees(db: Session = Depends(get_db)):
+    #print(db.query(Employee).all())
     return db.query(Employee).all()
 
+
+@app.get("/api/oneEmployee/{id}")
+def get_one_employee(id, db: Session = Depends(get_db)):
+    content = ""
+    client = db.query(Employee).filter(Employee.Id == id).first()
+    if client==None:  
+        return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})
+    #client_parsed = row2dict(client)
+    # '?currency=usd'
+    #if currency:
+    #    balance_usd = round( int(client_parsed['balance']) / current_dollar_rate, 3)
+    #    content = "Клиент: {0}, Баланс в usd: {1}".format(client_parsed['name'], balance_usd)
+    #else:
+    #    content = "Клиент: {0}, Баланс в рублях: {1}".format(client_parsed['name'], client_parsed['balance'])
+    result = {"status":"OK", "code":200, "content": content}
+    return result
+    #return db.query(Employee).all()
 
 
 @app.post("/api/newEmployee")
