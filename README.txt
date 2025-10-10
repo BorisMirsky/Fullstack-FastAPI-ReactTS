@@ -14,3 +14,4 @@ activate
 Перейти в папку проекта 'app', 
 выполнить в терминале команду 'uvicorn main:app --reload'
 
+curl -X GET -H "Content-Type: application/json" "http://127.0.0.1:8000/api/allEmployees" 

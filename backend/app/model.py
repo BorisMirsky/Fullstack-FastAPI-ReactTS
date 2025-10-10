@@ -18,7 +18,7 @@ Base = declarative_base()
 class Employee(Base):
     __tablename__ = "people" 
     #id_ = Column(uuid.UUID, primary_key=True, index=True)
-    id = Column(String, primary_key=True, index=True)
+    Id = Column(String, primary_key=True, index=True)
     name = Column(String)
     gender = Column(String)
     birthdate = Column(Integer)
