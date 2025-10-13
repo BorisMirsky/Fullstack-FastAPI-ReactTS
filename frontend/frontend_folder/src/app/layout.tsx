@@ -3,6 +3,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import 'typeface-roboto';
 
+import { Inter } from 'next/font/google';
+import ThemeRegistry from '../ThemeRegistry/ThemeRegistry';
+
+const inter = Inter({ subsets: ['latin'] });
 
 
 const geistSans = Geist({
@@ -28,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+              <ThemeRegistry>{children}</ThemeRegistry>
       </body>
     </html>
   );
