@@ -10,8 +10,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useEffect, useState } from 'react'
-import { getAllEmployees } from '@/lib/api'
-import type { Employee } from '@/lib/types'
+import { getAllEmployees } from '@/lib_folder/api'
+import type { Employee } from '@/lib_folder/types'
 
 
 
