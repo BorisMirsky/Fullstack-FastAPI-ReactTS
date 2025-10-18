@@ -13,8 +13,10 @@ app = FastAPI()
 
 
 origins = [
-    "http://localhost:5173",
-    "localhost:5173"
+    #"http://localhost:5173",
+    #"localhost:5173",
+    "http://localhost:3000",
+    "localhost:3000"
 ]
 
 
@@ -51,7 +53,7 @@ def root():
 @app.get("/allEmployees")
 def get_all_employees(db: Session = Depends(get_db)):
     res = db.query(Employee).all()  
-    return res.gender   
+    return res  #.gender   
 
 # /oneEmployee/FA246E13-3220-4568-807B-1B04BD70248C
 # /oneEmployee/5E0F85A9-4ADA-49F7-8C81-556EE8F8826D
@@ -81,8 +83,7 @@ if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8001)
 
        
-#if __name__ == "__main__":
-#    uvicorn.run("app.api:app", host="0.0.0.0", port=8000, reload=True)
+
 
 
     

@@ -9,7 +9,7 @@
 
 
         Запустить виртуальное окружение
-Fullstack-FastAPI-ReactTS\backend\my_virt\Scripts
+cd Fullstack-FastAPI-ReactTS\backend\my_virt\Scripts
 activate
 
 
@@ -23,7 +23,9 @@ activate
 Вызов консоли разработчика "ctrl + `". Выполнить команду 'npm run dev'
 
 
-На 10.10 готово 10%.
-Не получается поставить mui.
+
+
+На 18.10 готово 10%.
+
 
 

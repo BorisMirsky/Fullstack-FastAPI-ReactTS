@@ -1,27 +1,34 @@
-"use client"
+﻿"use client"
+
 
 import styles from "./page.module.css";
 import React from 'react';
 import { Button } from '@mui/material';
-export default function HomePage() {   
+import { useRouter } from 'next/navigation';
+
+
+export default function HomePage() {
+    const router = useRouter();
     return (
-        <div className={styles.main}
-            style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height: '100vh'
-            }}>
-            <main className={styles.main}>
-                main
-                <br />
-                <br />
-                <br />
-                <Button variant="contained" color="primary">
-                    Material-UI Button
+        < div className = { styles.page }>
+            <div style={{ display: 'grid', placeItems: 'center' }}>
+                <br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br />
+                <br /><br /><br /><br /><br /><br />
+                <h3>CRUD операции с БД &apos;&apos;Сотрудники&apos;&apos;</h3>
+                <br /> 
+                <p >Все возможные совпадения ФИО с реальными людьми являются случайными</p>
+                <br /><br /><br />
+                <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => router.push('/employees')}
+                >
+                    Поехали
                 </Button>
-            <br/>
-            </main>
-        </div>);
+                <br />
+            </div>
+            </div>
+    );
 };
 
