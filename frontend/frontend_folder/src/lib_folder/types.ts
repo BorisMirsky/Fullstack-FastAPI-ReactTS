@@ -1,6 +1,11 @@
 ﻿
+export interface ButtonProps {
+    id: string
+    colorButton: string 
+}
+
 export type Employee = {
-    id: string;
+    Id: string;
     name: string;
     gender: string;
     birthdate: string;

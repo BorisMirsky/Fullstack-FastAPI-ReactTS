@@ -13,8 +13,6 @@ app = FastAPI()
 
 
 origins = [
-    #"http://localhost:5173",
-    #"localhost:5173",
     "http://localhost:3000",
     "localhost:3000"
 ]
@@ -41,6 +39,17 @@ def get_db():
         db.close()
 
 
+#------------------------------------------------------------------#
+
+
+# Вспомогательная функция
+def find_person(id_, db: Session = Depends(get_db)):
+   people = db.query(Employee).all() 
+   for person in people: 
+        if person.id == id_:
+           return person
+   return None
+
 #----------------------- api --------------------------------------#
         
 @app.get("/")
@@ -53,13 +62,12 @@ def root():
 @app.get("/allEmployees")
 def get_all_employees(db: Session = Depends(get_db)):
     res = db.query(Employee).all()  
-    return res  #.gender   
+    return res   
 
-# /oneEmployee/FA246E13-3220-4568-807B-1B04BD70248C
-# /oneEmployee/5E0F85A9-4ADA-49F7-8C81-556EE8F8826D
-@app.get("/oneEmployee/{id_}") #5E0F85A9-4ADA-49F7-8C81-556EE8F8826D
+
+
+@app.get("/oneEmployee/{id_}")
 def get_one_employee(id_, db: Session = Depends(get_db)):
-    content = ""
     client = db.query(Employee).filter(Employee.Id == id_).first()
     if client==None:  
         return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})
@@ -67,7 +75,7 @@ def get_one_employee(id_, db: Session = Depends(get_db)):
     return result
 
 
-
+#---------------------------------------------------------------------#
 @app.post("/newEmployee")
 def create_employee(data  = Body(), db: Session = Depends(get_db)):
     new_client = Employee()
@@ -77,6 +85,30 @@ def create_employee(data  = Body(), db: Session = Depends(get_db)):
     db.commit() 
     db.refresh(new_client)
     return new_client
+
+
+
+@app.delete("/deleteEmployee/{id_}")
+def delete_employee(id_, db: Session = Depends(get_db)):
+    #client = db.query(Employee).filter(Employee.Id == id_).first()
+    #if client==None:  
+    #    return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})
+    #result = {"status":"OK", "code":200, "content": client}
+    result1 = {"status":"OK", "code":200, "content": client}
+    return result1
+
+
+
+@app.put("/putEmployee/{id_}")
+def put_employee(id_, db: Session = Depends(get_db)):
+    content = ""
+    client = db.query(Employee).filter(Employee.Id == id_).first()
+    if client==None:  
+        return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})
+    result = {"status":"OK", "code":200, "content": client}
+    return result
+
+
 
 
 if __name__ == "__main__":
