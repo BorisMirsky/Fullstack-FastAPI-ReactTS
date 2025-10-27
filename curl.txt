@@ -1,0 +1,6 @@
+curl -X POST -H "Content-Type: application/json" http://127.0.0.1:8000/newEmployee -d "{\"id_\": \"id666"\, \"name\": \"QWE"\, \"position\": \"ADSFSFSF"\, \"gender\": \"gdgdgd"\, \"salary\": 333, \"birthdate\": 2007}"
+
+curl -X POST -H "Content-Type: application/json" http://127.0.0.1:8000/newEmployee -d "{\"id_\": \"id666"\}"
+
+
+curl -X PUT -H "Content-Type: application/json" http://127.0.0.1:8000/add_product_to_order -d "{\"order_id\": 1, \"product_id\": 2, \"product_count\": 3}"

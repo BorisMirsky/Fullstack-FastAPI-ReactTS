@@ -39,8 +39,6 @@ def get_db():
         db.close()
 
 
-#------------------------------------------------------------------#
-
 
 # Вспомогательная функция
 def find_person(id_, db: Session = Depends(get_db)):
@@ -50,20 +48,20 @@ def find_person(id_, db: Session = Depends(get_db)):
            return person
    return None
 
+
 #----------------------- api --------------------------------------#
+
         
 @app.get("/")
 def root():
     #return FileResponse("public/index.html")
-    return"Start page1"
-
+    return "project's root"
 
 
 @app.get("/allEmployees")
 def get_all_employees(db: Session = Depends(get_db)):
     res = db.query(Employee).all()  
     return res   
-
 
 
 @app.get("/oneEmployee/{id_}")
@@ -75,28 +73,24 @@ def get_one_employee(id_, db: Session = Depends(get_db)):
     return result
 
 
-#---------------------------------------------------------------------#
 @app.post("/newEmployee")
 def create_employee(data  = Body(), db: Session = Depends(get_db)):
     new_client = Employee()
-    new_client.name = data["name"]
-    new_client.position = data["position"]
+    #
+    new_client.Id = data["Id"]
+    new_client.name = 'data["name"]'
+    new_client.position = 'data["position"]'
+    new_client.gender = 'data["gender"]'
+    new_client.salary = 'data["salary"]'
+    new_client.birthdate = 'data["birthdate"]'
+    #
     db.add(new_client)
     db.commit() 
     db.refresh(new_client)
-    return new_client
+    result = {"status":"OK", "code":200, "content":new_client}
+    return result
 
-
-
-@app.delete("/deleteEmployee/{id_}")
-def delete_employee(id_, db: Session = Depends(get_db)):
-    #client = db.query(Employee).filter(Employee.Id == id_).first()
-    #if client==None:  
-    #    return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})
-    #result = {"status":"OK", "code":200, "content": client}
-    result1 = {"status":"OK", "code":200, "content": client}
-    return result1
-
+#----------------------------------------------------
 
 
 @app.put("/putEmployee/{id_}")
@@ -109,8 +103,17 @@ def put_employee(id_, db: Session = Depends(get_db)):
     return result
 
 
+@app.delete("/deleteEmployee/{id_}")
+def delete_employee(id_, db: Session = Depends(get_db)):
+    client = db.query(Employee).filter(Employee.Id == id_).first()
+    if client==None:  
+        return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})
+    all_clients = db.query(Employee).all()
+    all_clients.delete(client)
 
 
+
+#http://127.0.0.1:8000/
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8001)
 
