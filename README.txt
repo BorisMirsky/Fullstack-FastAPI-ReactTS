@@ -25,7 +25,9 @@ activate
 
 
 
-На 18.10 готово 10%.
+29.10.2025 - backend is ready
+
+
 
 
 
