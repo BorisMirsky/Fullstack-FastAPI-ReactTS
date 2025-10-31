@@ -63,7 +63,7 @@ def get_all_employees(db: Session = Depends(get_db)):
     return res   
 
 
-@app.get("/oneEmployee/{id_}")
+@app.get("/oneEmployee/id={id_}")
 def get_one_employee(id_, db: Session = Depends(get_db)):
     client = db.query(Employee).filter(Employee.Id == id_).first()
     if client==None:  
@@ -88,7 +88,7 @@ def create_employee(data  = Body(), db: Session = Depends(get_db)):
     return result
 
 
-@app.delete("/deleteEmployee/{id_}")
+@app.delete("/deleteEmployee/id={id_}")
 def delete_employee(id_, db: Session = Depends(get_db)):
     client = db.query(Employee).filter(Employee.Id == id_).first()
     if not client:  

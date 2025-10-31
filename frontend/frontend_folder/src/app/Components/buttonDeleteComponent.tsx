@@ -25,7 +25,7 @@ export default function ButtonDelete({ id, colorButton }: ButtonProps) {
 
     function handleClick() {
         deleteEmployee(id);
-        console.log(id, 'Function ButtonDelete');
+        //console.log(id, 'Function ButtonDelete');
     }
 
 

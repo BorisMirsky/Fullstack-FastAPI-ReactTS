@@ -34,7 +34,7 @@ export const getAllEmployees = async () => {
 
 
 export const getOneEmployee = async (id: string) => {
-    const response = await fetch("http://127.0.0.1:8000/oneEmployee/" + id, {
+    const response = await fetch("http://127.0.0.1:8000/oneEmployee/id=" + id, {
         headers: {
             'Content-type': 'application/json',
             "Access-Control-Allow-Origin": "*",
@@ -64,16 +64,16 @@ export const getOneEmployee = async (id: string) => {
 
 
 export const deleteEmployee = async (id: string) => {
-    await fetch("http://127.0.0.1:8000/deleteEmployee/" + id, {
+    await fetch("http://127.0.0.1:8000/deleteEmployee/id=" + id, {
         headers: {
             'Content-type': 'application/json',
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Headers": "Content-Type",
-            "Access-Control-Allow-Methods": 'GET',
+            "Access-Control-Allow-Methods": 'DELETE',
         },
         method: 'DELETE',
         mode: 'cors'
     });
     //router.push('/oneemployee/' + id)
-    window.location.href = 'allemployees';
+    //window.location.href = 'allemployees';
 };

@@ -2,12 +2,11 @@
 
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import AllEmployeesTable from '@/app/Components/allEmployeesTableComponent';
-import ButtonCreate from '@/app/Components/buttonCreateComponent';
+//import AllEmployeesTable from '@/app/Components/allEmployeesTableComponent';
 
 
 
-// Employees
+// New Employee
 export default function Page() {
     const [_, setLoading] = useState(false)
 
@@ -28,8 +27,7 @@ export default function Page() {
 
     return (
         <div>
-            <ButtonCreate />
-            <AllEmployeesTable />
+            New employee
         </div>
 
     )

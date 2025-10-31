@@ -37,7 +37,7 @@ export default function ButtonUpdate({ id, colorButton }: ButtonProps) {
             variant="contained"
             size="small"
             color="warning"
-            onClick={() => router.push('/oneemployee/' + id)}
+            onClick={() => router.push('/oneemployee/id=' + id)}
             sx={{ ml: 2, mr: 2 }}
         >
             Update
