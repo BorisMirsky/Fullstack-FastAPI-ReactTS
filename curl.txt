@@ -1,6 +1,6 @@
 curl -X POST -H "Content-Type: application/json" http://127.0.0.1:8000/newEmployee -d "{\"id_\": \"id666"\, \"name\": \"QWE"\, \"position\": \"ADSFSFSF"\, \"gender\": \"gdgdgd"\, \"salary\": 333, \"birthdate\": 2007}"
 
-curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8000/oneEmployee/EC13913A-DBE1-4D07-9346-BB4607680019
+curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8000/oneEmployee/id=EC13913A-DBE1-4D07-9346-BB4607680019
 
 curl -X DELETE -H "Content-Type: application/json" http://127.0.0.1:8000/deleteEmployee/99F1DBDD-37DA-468B-AFA9-709F5B325318
 

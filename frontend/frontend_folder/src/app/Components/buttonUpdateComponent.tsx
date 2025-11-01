@@ -11,15 +11,8 @@ import { ButtonProps } from '@/lib_folder/types';
 import { useRouter } from 'next/navigation';
 
 
-const theme = {
-    spacing: 8,
-}
-
-
-
-export default function ButtonUpdate({ id, colorButton }: ButtonProps) {
+export default function ButtonUpdate({ id }: ButtonProps) {
     const [_, setId] = useState<string>()
-    const [__, setColorButton] = useState<string>()
     const router = useRouter();
 
 
@@ -27,17 +20,16 @@ export default function ButtonUpdate({ id, colorButton }: ButtonProps) {
         if (id)
         {
             setId(id)
-            setColorButton(colorButton)
         }
-    }, [id, colorButton])
+    }, [id])   
 
 
     return (
         <Button
             variant="contained"
             size="small"
-            color="warning"
-            onClick={() => router.push('/oneemployee/id=' + id)}
+            color="warning"  
+            onClick={() => router.push('/employee/id=' + id)}
             sx={{ ml: 2, mr: 2 }}
         >
             Update

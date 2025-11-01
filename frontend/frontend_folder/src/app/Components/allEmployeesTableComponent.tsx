@@ -15,13 +15,6 @@ import { useEffect, useState } from 'react';
 import { getAllEmployees } from '@/lib_folder/api';
 import ButtonDelete from '@/app/Components/buttonDeleteComponent';
 import ButtonUpdate from '@/app/Components/buttonUpdateComponent';
-//import { spacing } from '@mui/system';
-
-
-//const theme = {
-//    spacing: 8,
-//}
-
 
 
 export default function AllEmployeesTable() {
@@ -36,13 +29,10 @@ export default function AllEmployeesTable() {
         } 
     }
 
-
     useEffect(() =>
     {
         void refresh()
-    },
-        [])
-
+    }, [])
 
     const StyledTableCell = styled(TableCell)(({ theme }) => ({
         [`&.${tableCellClasses.head}`]: {
@@ -63,6 +53,13 @@ export default function AllEmployeesTable() {
             border: 0,
         },
     }));
+
+    async function handleDeleteClick () {
+        console.log("handleDeleteClick");
+        //await refresh();
+        const empls: [] = await getAllEmployees();
+        setEmployees(empls);
+    };
 
     return (
         <TableContainer component={Paper}>
@@ -91,8 +88,8 @@ export default function AllEmployeesTable() {
                             <StyledTableCell align="right">{employee.position}</StyledTableCell>
                             <StyledTableCell align="right">{employee.salary}</StyledTableCell>
                             <StyledTableCell align="right">
-                                <ButtonDelete id={employee.Id} colorButton="error" />
-                                <ButtonUpdate id={employee.Id} colorButton="warning" />
+                                <ButtonDelete id={employee.Id} func={handleDeleteClick} />
+                                <ButtonUpdate id={employee.Id}  />
                             </StyledTableCell>
                         </StyledTableRow>
                     ))}

@@ -1,31 +1,26 @@
 ﻿'use client'
 
-
 import * as React from 'react';
 import Button from '@mui/material/Button';
-//import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
-import { ButtonProps } from '@/lib_folder/types';
 import { deleteEmployee } from '@/lib_folder/api';
-import { spacing } from '@mui/system';
+import type { ButtonProps1 } from '@/lib_folder/types';
 
 
-const theme = {
-    spacing: 8,
-}
-
-export default function ButtonDelete({ id, colorButton }: ButtonProps) {
-    const [_, setId] = useState<string>()
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+export default function ButtonDelete({ id, func } : ButtonProps1) {
+    const [_, setId] = useState<string>();
 
     useEffect(() => {
         if (id) {
-            setId(id)
+            setId(id);
         }
-    }, [id])
+    }, [id]);
 
-    function handleClick() {
+    async function handleClick() {
         deleteEmployee(id);
-        //console.log(id, 'Function ButtonDelete');
+        await func();
+        console.log(id, 'Function ButtonDelete');
     }
 
 
@@ -41,5 +36,7 @@ export default function ButtonDelete({ id, colorButton }: ButtonProps) {
         >
             Delete
         </Button>
-    )
+    );
 }
+
+

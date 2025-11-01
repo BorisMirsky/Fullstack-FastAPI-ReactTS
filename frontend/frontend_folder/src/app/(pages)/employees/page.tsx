@@ -6,11 +6,9 @@ import AllEmployeesTable from '@/app/Components/allEmployeesTableComponent';
 import ButtonCreate from '@/app/Components/buttonCreateComponent';
 
 
-
-// Employees
+// AllEmployees
 export default function Page() {
     const [_, setLoading] = useState(false)
-
 
     async function refresh() {
         try {
@@ -22,9 +20,7 @@ export default function Page() {
         }
     }
 
-
     useEffect(() => { void refresh() }, [])
-
 
     return (
         <div>

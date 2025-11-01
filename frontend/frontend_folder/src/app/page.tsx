@@ -19,7 +19,8 @@ export default function HomePage() {
                 <br /><br /><br /><br /><br /><br />
                 <h3>CRUD операции с БД &apos;&apos;Сотрудники&apos;&apos;</h3>
                 <br /> 
-                <p >Все возможные совпадения ФИО с реальными людьми являются случайными</p>
+                <p >ФИО сгенерированы python библиотекой &apos;russian-names&apos;</p>
+                <p >Все возможные совпадения с реальными людьми являются случайными</p>
                 <br /><br /><br />
                 <Button
                     variant="contained"

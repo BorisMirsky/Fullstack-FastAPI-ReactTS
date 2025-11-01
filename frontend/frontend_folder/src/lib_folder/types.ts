@@ -1,7 +1,13 @@
 ﻿
 export interface ButtonProps {
     id: string
-    colorButton: string 
+    //colorButton: string 
+}
+
+export interface ButtonProps1 {
+    id: string
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+    func: Function
 }
 
 
