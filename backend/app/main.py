@@ -7,6 +7,7 @@ from fastapi.responses import JSONResponse, FileResponse
 from datetime import datetime
 from pydantic import create_model
 from fastapi.middleware.cors import CORSMiddleware
+import uuid
 
 
 app = FastAPI()
@@ -75,12 +76,12 @@ def get_one_employee(id_, db: Session = Depends(get_db)):
 @app.post("/newEmployee")
 def create_employee(data  = Body(), db: Session = Depends(get_db)):
     new_client = Employee()
-    new_client.Id = data["Id"]
+    new_client.Id = str(uuid.uuid4())
     new_client.name = data["name"]
     new_client.position = data["position"]
     new_client.gender = data["gender"]
     new_client.salary = data["salary"]
-    new_client.birthdate = data["birthdate"]
+    new_client.birthdate = data["birthYear"]
     db.add(new_client)
     db.commit() 
     db.refresh(new_client)
@@ -95,8 +96,8 @@ def delete_employee(id_, db: Session = Depends(get_db)):
         return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})
     db.delete(client)
     db.commit()
-    result = {"status":"OK", "code":200, "content": "employee removed from db"}
-    return result
+    #result = {"status":"OK", "code":200, "content": "employee removed from db"}
+    #return result
 
 
 @app.patch("/patchEmployee/{id_}")

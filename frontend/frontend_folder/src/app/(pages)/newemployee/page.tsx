@@ -2,7 +2,8 @@
 
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-//import AllEmployeesTable from '@/app/Components/allEmployeesTableComponent';
+import NewEmployee from '@/app/Components/newEmployeeComponent';
+import ButtonToMain from '@/app/Components/buttonBackToMain';
 
 
 
@@ -27,9 +28,9 @@ export default function Page() {
 
     return (
         <div>
-            New employee
+        <NewEmployee />
+        <ButtonToMain />
         </div>
-
     )
 }
 

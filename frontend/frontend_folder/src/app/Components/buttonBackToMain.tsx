@@ -5,7 +5,7 @@ import Button from '@mui/material/Button';
 import { useRouter } from 'next/navigation';
 
 
-export default function ButtonCreate() {
+export default function ButtonToMain() {
     const router = useRouter();
 
 
@@ -13,11 +13,11 @@ export default function ButtonCreate() {
         <Button
             variant="contained"
             size="small"
-            //color="error"
-            onClick={() => router.push('/newemployee')}
-            sx={{ ml: 5, mt: 5, backgroundColor: 'blue'}} 
+            color="primary"
+            onClick={() => router.push('/employees')}
+            sx={{ ml: 5, mt: 5 }}
         >
-            Создать сотрудника
+            Вернуться к списку сотрудников
         </Button>
     )
 }

@@ -25,9 +25,3 @@ activate
 
 
 
-29.10.2025 - backend is ready
-
-
-
-
-

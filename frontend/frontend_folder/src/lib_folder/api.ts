@@ -1,5 +1,6 @@
 ﻿
 import { useRouter } from 'next/navigation';
+import { EmployeeRequest } from '@/lib_folder/types';
 
 //const router = useRouter();
 
@@ -75,5 +76,20 @@ export const deleteEmployee = async (id: string) => {
         mode: 'cors'
     });
     //router.push('/oneemployee/' + id)
-    //window.location.href = 'allemployees';
+};
+
+
+
+export const createEmployee = async (emplRequest: EmployeeRequest) => {
+    await fetch("http://127.0.0.1:8000/newEmployee/", {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Allow-Methods": 'POST',
+        },
+        mode: 'cors',
+        body: JSON.stringify(emplRequest)
+    }).catch(error => console.log("createEmployeeError: ", error));
 };
