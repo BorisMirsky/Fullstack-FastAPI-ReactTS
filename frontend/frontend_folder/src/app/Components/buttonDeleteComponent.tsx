@@ -17,12 +17,11 @@ export default function ButtonDelete({ id, func } : ButtonProps1) {
         }
     }, [id]);
 
-    async function handleClick() {
-        deleteEmployee(id);
-        await func();
-        console.log(id, 'Function ButtonDelete');
-    }
 
+    const handleClick = async () => {
+        await deleteEmployee(id);
+        //await func();
+    };
 
     return (
         <Button

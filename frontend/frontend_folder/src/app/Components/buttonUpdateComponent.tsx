@@ -23,13 +23,18 @@ export default function ButtonUpdate({ id }: ButtonProps) {
         }
     }, [id])   
 
+    function handleClick() {
+        console.log(id, 'Function ButtonUpdate');
+    }
+
 
     return (
         <Button
             variant="contained"
             size="small"
             color="warning"  
-            onClick={() => router.push('/employee/id=' + id)}
+            //onClick={() => router.push('/employee/id=' + id)}
+            //onClick={() => handleClick()}
             sx={{ ml: 2, mr: 2 }}
         >
             Update

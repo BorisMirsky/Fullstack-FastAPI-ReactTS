@@ -8,9 +8,6 @@ import { getOneEmployee } from '@/lib_folder/api';
 import { useSearchParams } from 'next/navigation';
 
 
-
-
-
 // One Employee
 export default function Page() {
     const [loading, setLoading] = useState(false)
@@ -18,9 +15,6 @@ export default function Page() {
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const id = params.toString().split("=")[1];
-
-
-
 
     async function refresh() {
         try {
