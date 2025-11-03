@@ -96,8 +96,7 @@ def delete_employee(id_, db: Session = Depends(get_db)):
         return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})
     db.delete(client)
     db.commit()
-    #result = {"status":"OK", "code":200, "content": "employee removed from db"}
-    #return result
+
 
 
 @app.patch("/patchEmployee/{id_}")
@@ -112,7 +111,6 @@ def put_employee(id_, data  = Body(), db: Session = Depends(get_db)):
     db.refresh(empl)
     result = {"status":"OK", "code":200, "employee": empl}
     return result
-
 
 
 
