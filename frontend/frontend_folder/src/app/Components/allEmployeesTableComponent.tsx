@@ -20,21 +20,31 @@ import Link from 'next/link';
 
 
 export default function AllEmployeesTable() {
-    const [employees, setEmployees] = useState<Employee[]>([])
+    const [employees, setEmployees] = useState<Employee[]>([]);
+    const [count, setCount] = useState(0);
 
-    async function refresh() {
-        try {
-            const empls: [] = await getAllEmployees();
-            setEmployees(empls);
-        } catch (e) {
-            console.log("Error: ", e);
-        } 
-    }
+    //async function refresh() {
+    //    try {
+    //        const empls: [] = await getAllEmployees();
+    //        setEmployees(empls);
+    //    } catch (e) {
+    //        console.log("Error: ", e);
+    //    }
+    //}
 
-    useEffect(() =>
-    {
-        void refresh()
-    }, [])
+    //useEffect(() =>
+    //{
+    //    //void refresh()
+    //}, [])
+
+    useEffect(() => {
+        setEmployees([]);
+        const getEmployees = async () => {
+            const responce = await getAllEmployees();
+            setEmployees(responce);
+        }
+        getEmployees();
+    }, []);
 
     const StyledTableCell = styled(TableCell)(({ theme }) => ({
         [`&.${tableCellClasses.head}`]: {
@@ -46,6 +56,7 @@ export default function AllEmployeesTable() {
         },
     }));
 
+
     const StyledTableRow = styled(TableRow)(({ theme }) => ({
         '&:nth-of-type(odd)': {
             backgroundColor: theme.palette.action.hover,
@@ -56,12 +67,6 @@ export default function AllEmployeesTable() {
         },
     }));
 
-    async function handleDeleteClick () {
-        console.log("handleDeleteClick");
-        //await refresh();
-        const empls: [] = await getAllEmployees();
-        setEmployees(empls);
-    };
 
     return (
         <TableContainer component={Paper}>
@@ -90,11 +95,11 @@ export default function AllEmployeesTable() {
                             <StyledTableCell align="right">{employee.position}</StyledTableCell>
                             <StyledTableCell align="right">{employee.salary}</StyledTableCell>
                             <StyledTableCell align="right">
-                                <ButtonDelete id={employee.Id} func={handleDeleteClick} />
+                                <ButtonDelete id={employee.Id} stateChanger={setCount} />
                                 <Link
                                     href={{
-                                        pathname: "/employee",
-                                        query: { id: employee.Id },
+                                        pathname: "/employee"
+                                        //query: { id: employee.Id },
                                     }}
                                 >
                                     <ButtonUpdate id={employee.Id} />
