@@ -60,7 +60,8 @@ def root():
 
 @app.get("/allEmployees")
 def get_all_employees(db: Session = Depends(get_db)):
-    res = db.query(Employee).all()  
+    res = db.query(Employee).all()
+    print('allEmployees')
     return res   
 
 
@@ -73,8 +74,18 @@ def get_one_employee(id_, db: Session = Depends(get_db)):
     return result
 
 
-@app.post("/newEmployee")
-def create_employee(data  = Body(), db: Session = Depends(get_db)):
+@app.delete("/deleteEmployee/id={id_}")
+def delete_employee(id_, db: Session = Depends(get_db)):
+    client = db.query(Employee).filter(Employee.Id == id_).first()
+    if not client:  
+        return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})
+    db.delete(client)
+    db.commit()
+
+    
+@app.post("/newEmployee/")
+def create_employee(data = Body(), db: Session = Depends(get_db)):
+    print('create_employee', data)
     new_client = Employee()
     new_client.Id = str(uuid.uuid4())
     new_client.name = data["name"]
@@ -87,16 +98,6 @@ def create_employee(data  = Body(), db: Session = Depends(get_db)):
     db.refresh(new_client)
     result = {"status":"OK", "code":200, "content":new_client}
     return result
-
-
-@app.delete("/deleteEmployee/id={id_}")
-def delete_employee(id_, db: Session = Depends(get_db)):
-    client = db.query(Employee).filter(Employee.Id == id_).first()
-    if not client:  
-        return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})
-    db.delete(client)
-    db.commit()
-
 
 
 @app.patch("/patchEmployee/{id_}")

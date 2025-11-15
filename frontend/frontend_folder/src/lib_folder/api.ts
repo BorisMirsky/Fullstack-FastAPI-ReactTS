@@ -36,6 +36,8 @@ export const getAllEmployees = async () => {
 
 export const getOneEmployee = async (id: string) => {
     const url = "http://127.0.0.1:8000/oneemployee/id=" + id;
+    //console.log(url);
+    //console.log("id   ", id);
     const response = await fetch(url, {
         headers: {
             'Content-type': 'application/json',

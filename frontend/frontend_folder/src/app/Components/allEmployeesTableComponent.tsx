@@ -98,7 +98,7 @@ export default function AllEmployeesTable() {
                                 <ButtonDelete id={employee.Id} stateChanger={setCount} />
                                 <Link
                                     href={{
-                                        pathname: "/employee"
+                                        pathname: "/employee/id=" + employee.Id 
                                         //query: { id: employee.Id },
                                     }}
                                 >

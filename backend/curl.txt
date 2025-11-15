@@ -1,0 +1,11 @@
+curl -X POST -H "Content-Type: application/json" -H "accept: application/json" http://127.0.0.1:8000/newEmployee/ -d "{\"name\": \"kwkwkw\", \"position\": \"whore_satana\", \"gender\": \"2w2w2\", \"salary\": 555, \"birthYear\": 1999}"
+
+curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8000/oneEmployee/id=0C63F2EB-B323-4959-962C-788DA8109290
+
+curl -X DELETE -H "Content-Type: application/json" http://127.0.0.1:8000/deleteEmployee/id=5CD3D662-070B-41B9-B080-5C86B7781DA9
+
+curl -X PATCH -H "Content-Type: application/json" http://127.0.0.1:8000/patchEmployee/5CD3D662-070B-41B9-B080-5C86B7781DA9 -d "{\"position\": \"SATANA\", \"salary\": 5151}"
+
+curl -X GET -H "Content-Type: application/json" http://127.0.0.1:8000/allEmployees
+
+

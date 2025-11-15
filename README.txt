@@ -6,6 +6,10 @@
     pip install fastapi
     pip install "uvicorn[standard]"
 Если нет, то ставить в виртуальное окружение (см ниже)
+Можно так:
+- зайти в Fullstack-FastAPI-ReactTS\backend
+- pip install -r requirements.txt
+Но смысла нет - нужны только 2 пакета выше.
 
 
         Запустить виртуальное окружение
@@ -19,6 +23,11 @@ activate
 Можно открыть по адресу http://127.0.0.1:8000/ и погонять скриптами из файла curl.txt.
 
 
+         Запуск idle из под виртального окружения
+'python -m idlelib.idle'
+
+
+
          Запуск фронтенда
 Переход в папку Fullstack-FastAPI-ReactTS\frontend.
 Вызов консоли разработчика "ctrl + `". Выполнить команду 'npm run dev'
@@ -26,4 +35,4 @@ activate
 
 
 
-На 05.11.2025 готовность 70%.
+

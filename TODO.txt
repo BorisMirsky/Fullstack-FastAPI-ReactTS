@@ -1,14 +1,24 @@
+backend (curl)
+-  getAll - ok
+-  getOne - ok
+-  delete - ok
+-  patch -  ok
+-  create - ok
 
 
 
 frontend
 -  getAll - ok
--  getOne - ошибка, не понимаю
--  delete - удаляет но не обновляет страницу         need rerun 'setEmployees'
--  patch -  ничего нет
--  create - работает, но надо доделать:
+-  getOne -      !
+-  delete - ok
+-  patch -       !
+-  create - ok
+
+Create:
+доделать:
           - при вводе данных year & salary добавить min & max
           - box плохой (границы)
           - кнопка 'вернуться к списку' плохая (расположение и align)
 
-
+delete:
+удаляет но не обновляет страницу         need rerun 'setEmployees'
