@@ -6,7 +6,8 @@ import { EmployeeRequest } from '@/lib_folder/types';
 
 
 export const getAllEmployees = async () => {
-    const response = await fetch("http://127.0.0.1:8000/allEmployees", {
+    const url: string = "http://127.0.0.1:8000/allEmployees";
+    const response = await fetch(url, {
         headers: {
             'Content-type': 'application/json',
             "Access-Control-Allow-Origin": "*",
@@ -34,10 +35,9 @@ export const getAllEmployees = async () => {
 };
 
 
-export const getOneEmployee = async (id: string) => {
-    const url = "http://127.0.0.1:8000/oneemployee/id=" + id;
-    //console.log(url);
-    //console.log("id   ", id);
+export const getEmployee = async (id: string) => {
+    //const url = `htt p://127.0.0.1:8000/oneemployee/id=${id}`
+    const url = `http://127.0.0.1:8000/oneemployee/25215A34-D304-4E1A-86B0-A7BA24BA0AD2`
     const response = await fetch(url, {
         headers: {
             'Content-type': 'application/json',
@@ -68,7 +68,8 @@ export const getOneEmployee = async (id: string) => {
 
 
 export const deleteEmployee = async (id: string) => {
-    await fetch("http://127.0.0.1:8000/deleteEmployee/id=" + id, {
+    const url = `http://127.0.0.1:8000/deleteemployee/id=${id}`
+    await fetch(url, {
         headers: {
             'Content-type': 'application/json',
             "Access-Control-Allow-Origin": "*",

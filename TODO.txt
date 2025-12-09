@@ -5,8 +5,6 @@ backend (curl)
 -  patch -  ok
 -  create - ok
 
-
-
 frontend
 -  getAll - ok
 -  getOne -      !
@@ -14,11 +12,12 @@ frontend
 -  patch -       !
 -  create - ok
 
+
 Create:
-доделать:
           - при вводе данных year & salary добавить min & max
           - box плохой (границы)
           - кнопка 'вернуться к списку' плохая (расположение и align)
 
+
 delete:
-удаляет но не обновляет страницу         need rerun 'setEmployees'
+            удаляет но не обновляет страницу         need rerun 'setEmployees'

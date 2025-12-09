@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { Employee } from '../../../lib_folder/types';
 //import AllEmployeesTable from '@/app/Components/allEmployeesTableComponent';
-import { getOneEmployee } from '@/lib_folder/api';
+import { getEmployee } from '@/lib_folder/api';
 import { useSearchParams } from 'next/navigation';
 
 
@@ -15,7 +15,7 @@ export default function Page() {
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const id = params.toString().split("=")[1];
-
+    console.log(id, ' oneempl')
     async function refresh() {
         try {
             setLoading(true)
@@ -30,16 +30,19 @@ export default function Page() {
 
     useEffect(() => {
         const getEmpl = async () => {
-            const responce = await getOneEmployee(id);
+            //const responce = await getEmployee(id);
             setLoading(false);
-            setEmpl(responce);
+            //setEmpl(responce);
         };
         getEmpl();
     });  
 
 
     return (
+        <div>
         <div>One Employee</div>
+            <div>id `${id}`</div>
+        </div>
     )
 }
 
