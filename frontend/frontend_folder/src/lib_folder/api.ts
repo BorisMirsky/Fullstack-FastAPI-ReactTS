@@ -1,8 +1,5 @@
 ﻿
-import { useRouter } from 'next/navigation';
 import { EmployeeRequest } from '@/lib_folder/types';
-
-//const router = useRouter();
 
 
 export const getAllEmployees = async () => {
@@ -36,8 +33,7 @@ export const getAllEmployees = async () => {
 
 
 export const getEmployee = async (id: string) => {
-    //const url = `htt p://127.0.0.1:8000/oneemployee/id=${id}`
-    const url = `http://127.0.0.1:8000/oneemployee/25215A34-D304-4E1A-86B0-A7BA24BA0AD2`
+    const url = "http://127.0.0.1:8000/oneemployee/" + id;
     const response = await fetch(url, {
         headers: {
             'Content-type': 'application/json',
@@ -80,7 +76,6 @@ export const deleteEmployee = async (id: string) => {
         mode: 'cors'
     });
 };
-
 
 
 export const createEmployee = async (emplRequest: EmployeeRequest) => {

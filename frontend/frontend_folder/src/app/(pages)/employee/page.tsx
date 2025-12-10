@@ -16,6 +16,7 @@ export default function Page() {
     const params = new URLSearchParams(searchParams);
     const id = params.toString().split("=")[1];
     console.log(id, ' oneempl')
+    console.log(eml?.name, ' oneempl')
     async function refresh() {
         try {
             setLoading(true)
@@ -30,9 +31,9 @@ export default function Page() {
 
     useEffect(() => {
         const getEmpl = async () => {
-            //const responce = await getEmployee(id);
+            const responce = await getEmployee(id);
             setLoading(false);
-            //setEmpl(responce);
+            setEmpl(responce);
         };
         getEmpl();
     });  

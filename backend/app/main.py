@@ -61,23 +61,23 @@ def root():
 @app.get("/allEmployees")
 def get_all_employees(db: Session = Depends(get_db)):
     res = db.query(Employee).all()
-    print('___allEmployees___')
     return res   
 
 
-@app.get("/oneEmployee/id_")
+@app.get("/oneEmployee/{id_}")
 def get_one_employee(id_, db: Session = Depends(get_db)):
     print('get_one_employee ', id_)
     empl = db.query(Employee).filter(Employee.Id == id_).first()
     if empl==None:  
         return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})
     result = {"status":"OK", "code":200, "content": empl}
+    print('get_one_employee ', empl)
     return result
 
 
 @app.delete("/deleteEmployee/id={id_}")
 def delete_employee(id_, db: Session = Depends(get_db)):
-    #print('___deleteEmployee___')
+    print('___deleteEmployee___')
     client = db.query(Employee).filter(Employee.Id == id_).first()
     if not client:  
         return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})

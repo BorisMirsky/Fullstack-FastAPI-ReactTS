@@ -25,8 +25,9 @@ export default function ButtonUpdate({ id }: ButtonProps) {
 
     function handleClick() {
         console.log(id, 'Function ButtonUpdate');
+        //router.push('/employee/' + id);
         //router.push('/employee/id=' + id);
-        router.push('/employee');
+        //router.push('/employee');
     }
 
 
@@ -35,7 +36,6 @@ export default function ButtonUpdate({ id }: ButtonProps) {
             variant="contained"
             size="small"
             color="warning"  
-            //onClick={() => router.push('/employee/id=' + id)}
             onClick={() => handleClick()}
             sx={{ ml: 2, mr: 2 }}
         >

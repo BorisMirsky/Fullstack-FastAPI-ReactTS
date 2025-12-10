@@ -30,6 +30,7 @@ activate
 
          Запуск фронтенда
 Переход в папку Fullstack-FastAPI-ReactTS\frontend.
+Правая клавиша \ Open with WS.
 Вызов консоли разработчика "ctrl + `". Выполнить команду 'npm run dev'
 Приложение открыть по адресу http://localhost:3000.
 
