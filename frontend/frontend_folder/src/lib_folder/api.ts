@@ -33,6 +33,7 @@ export const getAllEmployees = async () => {
 
 
 export const getEmployee = async (id: string) => {
+    console.log("___id___ ", id)
     const url = "http://127.0.0.1:8000/oneemployee/" + id;
     const response = await fetch(url, {
         headers: {
@@ -64,7 +65,7 @@ export const getEmployee = async (id: string) => {
 
 
 export const deleteEmployee = async (id: string) => {
-    const url = `http://127.0.0.1:8000/deleteemployee/id=${id}`
+    const url = "http://127.0.0.1:8000/deleteemployee"; // ${id}`;
     await fetch(url, {
         headers: {
             'Content-type': 'application/json',

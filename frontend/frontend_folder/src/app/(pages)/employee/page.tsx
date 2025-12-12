@@ -15,8 +15,6 @@ export default function Page() {
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const id = params.toString().split("=")[1];
-    console.log(id, ' oneempl')
-    console.log(eml?.name, ' oneempl')
     async function refresh() {
         try {
             setLoading(true)
@@ -26,6 +24,9 @@ export default function Page() {
             setLoading(false)
         }
     }
+    //console.log(id, ' oneempl_1')
+    //console.log(eml?.name, ' oneempl_2')
+
 
     useEffect(() => { void refresh() }, [])
 

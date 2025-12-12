@@ -60,6 +60,7 @@ def root():
 
 @app.get("/allEmployees")
 def get_all_employees(db: Session = Depends(get_db)):
+    #print('___allEmployees___')
     res = db.query(Employee).all()
     return res   
 
@@ -71,18 +72,18 @@ def get_one_employee(id_, db: Session = Depends(get_db)):
     if empl==None:  
         return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})
     result = {"status":"OK", "code":200, "content": empl}
-    print('get_one_employee ', empl)
+    #print('get_one_employee name', empl.name)
     return result
 
 
-@app.delete("/deleteEmployee/id={id_}")
-def delete_employee(id_, db: Session = Depends(get_db)):
+@app.delete("/deleteEmployee") #/{id_}")
+def delete_employee(db: Session = Depends(get_db)):     #id_,
     print('___deleteEmployee___')
-    client = db.query(Employee).filter(Employee.Id == id_).first()
-    if not client:  
-        return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})
-    db.delete(client)
-    db.commit()
+    #client = db.query(Employee).filter(Employee.Id == id_).first()
+    #if not client:  
+    #    return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})
+    #db.delete(client)
+    #db.commit()
 
 
 @app.post("/newEmployee/")
@@ -119,7 +120,7 @@ def put_employee(id_, data  = Body(), db: Session = Depends(get_db)):
 
 #http://127.0.0.1:8000/
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8001)
+    uvicorn.run(app, host="127.0.0.1", port=8000)
 
        
 
