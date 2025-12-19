@@ -26,7 +26,7 @@ export default function ButtonUpdate({ id }: ButtonProps) {
     function handleClick() {
         console.log(id, 'Function ButtonUpdate');
         //router.push('/employee/' + id);
-        //router.push('/employee/id=' + id);
+        router.push('/employee?id=' + id);
         //router.push('/employee');
     }
 

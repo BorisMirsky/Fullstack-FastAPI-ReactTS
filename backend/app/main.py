@@ -65,7 +65,7 @@ def get_all_employees(db: Session = Depends(get_db)):
     return res   
 
 
-@app.get("/oneEmployee/{id_}")
+@app.get("/oneEmployee/id={id_}")
 def get_one_employee(id_, db: Session = Depends(get_db)):
     print('get_one_employee ', id_)
     empl = db.query(Employee).filter(Employee.Id == id_).first()
@@ -76,14 +76,14 @@ def get_one_employee(id_, db: Session = Depends(get_db)):
     return result
 
 
-@app.delete("/deleteEmployee") #/{id_}")
-def delete_employee(db: Session = Depends(get_db)):     #id_,
+@app.delete("/deleteEmployee/{id_}")
+def delete_employee(id_, db: Session = Depends(get_db)):     
     print('___deleteEmployee___')
-    #client = db.query(Employee).filter(Employee.Id == id_).first()
-    #if not client:  
-    #    return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})
-    #db.delete(client)
-    #db.commit()
+    client = db.query(Employee).filter(Employee.Id == id_).first()
+    if not client:  
+        return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})
+    db.delete(client)
+    db.commit()
 
 
 @app.post("/newEmployee/")

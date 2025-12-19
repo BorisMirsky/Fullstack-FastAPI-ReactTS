@@ -4,11 +4,11 @@ backend (curl)
 -  delete - ok
 -  patch -  ok
 -  create - ok
-
+                         через curl всё работает!
 frontend
 -  getAll - ok
 -  getOne -      !
--  delete - ok
+-  delete -      !
 -  patch -       !
 -  create - ok
 

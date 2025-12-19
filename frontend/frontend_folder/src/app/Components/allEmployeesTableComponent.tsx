@@ -96,14 +96,9 @@ export default function AllEmployeesTable() {
                             <StyledTableCell align="right">{employee.salary}</StyledTableCell>
                             <StyledTableCell align="right">
                                 <ButtonDelete id={employee.Id} stateChanger={setCount} />
-                                <Link
-                                    href={{
-                                    pathname: "employee",
-                                    query: {id:  employee.Id}
-                                    }}  
-                                >
+
                                     <ButtonUpdate id={employee.Id} />
-                                </Link>
+
                             </StyledTableCell>
                         </StyledTableRow>
                     ))}
@@ -112,3 +107,14 @@ export default function AllEmployeesTable() {
         </TableContainer>
     )
 }
+
+
+
+//<Link
+//    href={{
+//        pathname: "employee",
+//        query: { id: employee.Id }
+//    }}
+//>
+//    <ButtonUpdate id={employee.Id} />
+//</Link>
