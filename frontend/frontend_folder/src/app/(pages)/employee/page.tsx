@@ -15,20 +15,18 @@ export default function Page() {
     const searchParams = useSearchParams();
     const params = new URLSearchParams(searchParams);
     const id = params.toString().split("=")[1];
-    async function refresh() {
-        try {
-            setLoading(true)
-        } catch (e) {
-            console.log("Error: ", e);
-        } finally {
-            setLoading(false)
-        }
-    }
-    //console.log(id, ' oneempl_1')
-    //console.log(eml?.name, ' oneempl_2')
+    //async function refresh() {
+    //    try {
+    //        setLoading(true)
+    //    } catch (e) {
+    //        console.log("Error: ", e);
+    //    } finally {
+    //        setLoading(false)
+    //    }
+    //}
 
 
-    useEffect(() => { void refresh() }, [])
+    //useEffect(() => { void refresh() }, [])
 
     useEffect(() => {
         const getEmpl = async () => {

@@ -65,18 +65,18 @@ def get_all_employees(db: Session = Depends(get_db)):
     return res   
 
 
-@app.get("/oneEmployee/id={id_}")
-def get_one_employee(id_, db: Session = Depends(get_db)):
+#@app.get("/oneEmployee/{id_}")
+@app.get("/allEmployees/id={id_}")
+def get_one_employee(id_:str, db: Session = Depends(get_db)):
     print('get_one_employee ', id_)
     empl = db.query(Employee).filter(Employee.Id == id_).first()
     if empl==None:  
         return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})
     result = {"status":"OK", "code":200, "content": empl}
-    #print('get_one_employee name', empl.name)
     return result
 
 
-@app.delete("/deleteEmployee/{id_}")
+@app.delete("/deleteEmployee?{id_}")
 def delete_employee(id_, db: Session = Depends(get_db)):     
     print('___deleteEmployee___')
     client = db.query(Employee).filter(Employee.Id == id_).first()
@@ -88,7 +88,6 @@ def delete_employee(id_, db: Session = Depends(get_db)):
 
 @app.post("/newEmployee/")
 def create_employee(data = Body(), db: Session = Depends(get_db)):
-    #print('create_employee', data)
     new_client = Employee()
     new_client.Id = str(uuid.uuid4())
     new_client.name = data["name"]

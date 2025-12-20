@@ -4,12 +4,12 @@ backend (curl)
 -  delete - ok
 -  patch -  ok
 -  create - ok
-                         через curl всё работает!
+                         
 frontend
 -  getAll - ok
--  getOne -      !
--  delete -      !
--  patch -       !
+-  getOne -      не работает
+-  delete -      
+-  patch -       не сделан
 -  create - ok
 
 

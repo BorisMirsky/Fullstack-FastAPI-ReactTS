@@ -97,7 +97,7 @@ export default function AllEmployeesTable() {
                             <StyledTableCell align="right">
                                 <ButtonDelete id={employee.Id} stateChanger={setCount} />
 
-                                    <ButtonUpdate id={employee.Id} />
+                                <ButtonUpdate id={employee.Id} />
 
                             </StyledTableCell>
                         </StyledTableRow>
