@@ -1,4 +1,4 @@
-backend (curl)
+curl
 -  getAll - ok
 -  getOne - ok
 -  delete - ok
@@ -14,7 +14,6 @@ frontend
 
 
 Create:
-          - при вводе данных year & salary добавить min & max
           - box плохой (границы)
           - кнопка 'вернуться к списку' плохая (расположение и align)
 

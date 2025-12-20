@@ -5,23 +5,23 @@ import { TextField, Button, Box, Typography } from '@mui/material';
 import { createEmployee } from '@/lib_folder/api';
 import { EmployeeRequest } from '@/lib_folder/types';
 import MenuItem from '@mui/material/MenuItem';
-
+//import { NumberField } from '@base-ui-components/react';
 
 
 export default function NewEmployee () {
-    //const router = useRouter();
     const [name, setName] = useState('');
     const [gender, setGender] = useState('');
-    const [year, setYear] = useState('');
+    const [year, setYear] = useState(2000);
     const [position, setPosition] = useState('');
-    const [salary, setSalary] = useState('');
+    const [salary, setSalary] = useState(50000);
 
-    const handleClear = () => {
+    //const handleClear = () => {
+    function handleClear() {
         setName('');
         setGender(''); 
-        setYear('');
+        setYear(2000);
         setPosition('');
-        setSalary(''); 
+        setSalary(50000); 
     };
 
 
@@ -92,7 +92,7 @@ export default function NewEmployee () {
         >
       <Typography variant="h5" component="h2" gutterBottom>
         Новый сотрудник
-            </Typography>
+      </Typography>
 
       <TextField
         label="Name"
@@ -102,7 +102,7 @@ export default function NewEmployee () {
         onChange={(e) => setName(e.target.value)}
         fullWidth
         margin="normal"
-            />
+      />
 
       <TextField
         label="Gender"
@@ -121,13 +121,14 @@ export default function NewEmployee () {
         </TextField>
 
         <TextField
-            label="BirthYear"
-            variant="outlined"
-            type="number"
-            value={year}
-            onChange={(e) => setYear(e.target.value)}
-            fullWidth
-            margin="normal"
+                label="BirthYear"
+                variant="outlined"
+                type='number'
+                value={year}
+                onChange={(e) => setYear(parseInt(e.target.value))}
+                fullWidth
+                margin="normal"
+                InputProps={{ inputProps: { min: 1955, max: 2007 } }}
         />
 
         <TextField
@@ -151,9 +152,10 @@ export default function NewEmployee () {
             variant="outlined"
             type="number"
             value={salary}
-            onChange={(e) => setSalary(e.target.value)}
+            onChange={(e) => setSalary(parseInt(e.target.value))}
             fullWidth
             margin="normal"
+            InputProps={{ inputProps: { min: 50000, max: 5000000 } }}
         />
 
       <Button
@@ -165,6 +167,5 @@ export default function NewEmployee () {
         Создать
       </Button>
             </Box>
-
     )
 }
