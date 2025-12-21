@@ -23,6 +23,7 @@ export const getAllEmployees = async () => {
             }
         })
         .then(data => {
+            //console.log('getAllEmployees data: ', data);
             return data;
         })
         .catch(function (err) {
@@ -31,7 +32,7 @@ export const getAllEmployees = async () => {
     return response;
 };
 
-//oneemployee
+
 export const getEmployee = async (id: string) => {
     const url = `http://127.0.0.1:8000/allEmployees/id=${id}`;
     const response = await fetch(url, {
@@ -53,7 +54,7 @@ export const getEmployee = async (id: string) => {
             }
         })
         .then(data => {
-            console.log('getOneEmployee data: ', data);
+            //console.log('getOneEmployee data: ', data);
             return data;
         })
         .catch(function (err) {
@@ -64,7 +65,7 @@ export const getEmployee = async (id: string) => {
 
 
 export const deleteEmployee = async (id: string) => {
-    const url = `http://127.0.0.1:8000/deleteemployee/${id}`;
+    const url = `http://127.0.0.1:8000/delete/id=${id}`;
     await fetch(url, {
         headers: {
             'Content-type': 'application/json',

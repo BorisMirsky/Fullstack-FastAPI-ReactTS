@@ -29,7 +29,7 @@ app.add_middleware(
 
 
 # сессия подключения к бд
-SessionLocal = sessionmaker(autoflush=False, bind=engine)   # True\False ?
+SessionLocal = sessionmaker(autoflush=False, bind=engine)
 
 # определяем зависимость
 def get_db():
@@ -39,33 +39,19 @@ def get_db():
     finally:
         db.close()
 
-
-"""
-# Вспомогательная функция
-def find_person(id_, db: Session = Depends(get_db)):
-   people = db.query(Employee).all() 
-   for person in people: 
-        if person.id == id_:
-           return person
-   return None
-"""
-
-
         
 @app.get("/")
 def root():
-    #return FileResponse("public/index.html")
     return "project's root"
 
 
 @app.get("/allEmployees")
 def get_all_employees(db: Session = Depends(get_db)):
-    #print('___allEmployees___')
     res = db.query(Employee).all()
     return res   
 
 
-#@app.get("/oneEmployee/{id_}")
+
 @app.get("/allEmployees/id={id_}")
 def get_one_employee(id_:str, db: Session = Depends(get_db)):
     print('get_one_employee ', id_)
@@ -76,9 +62,8 @@ def get_one_employee(id_:str, db: Session = Depends(get_db)):
     return result
 
 
-@app.delete("/deleteEmployee?{id_}")
+@app.delete("/delete/id={id_}")
 def delete_employee(id_, db: Session = Depends(get_db)):     
-    print('___deleteEmployee___')
     client = db.query(Employee).filter(Employee.Id == id_).first()
     if not client:  
         return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})
@@ -117,7 +102,6 @@ def put_employee(id_, data  = Body(), db: Session = Depends(get_db)):
 
 
 
-#http://127.0.0.1:8000/
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
 

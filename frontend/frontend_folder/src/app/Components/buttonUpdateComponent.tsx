@@ -1,18 +1,14 @@
 ﻿'use client'
 
-
 import * as React from 'react';
 import Button from '@mui/material/Button';
-//import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
 import { ButtonProps } from '@/lib_folder/types';
-//import { getOneEmployee } from '@/lib_folder/api';
-//import { spacing } from '@mui/system';
 import { useRouter } from 'next/navigation';
 
 
 export default function ButtonUpdate({ id }: ButtonProps) {
-    const [_, setId] = useState<string>()
+    const [ , setId] = useState<string>()
     const router = useRouter();
 
 
@@ -24,10 +20,7 @@ export default function ButtonUpdate({ id }: ButtonProps) {
     }, [id])   
 
     function handleClick() {
-        console.log(id, 'Function ButtonUpdate');
-        //router.push('/employee/' + id);
         router.push('/employee?id=' + id);
-        //router.push('/employee');
     }
 
 

@@ -8,7 +8,7 @@ import ButtonCreate from '@/app/Components/buttonCreateComponent';
 
 // AllEmployees
 export default function Page() {
-    const [_, setLoading] = useState(false)
+    const [ , setLoading] = useState(false)
 
     async function refresh() {
         try {

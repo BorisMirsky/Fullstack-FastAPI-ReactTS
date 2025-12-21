@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import NewEmployee from '@/app/Components/newEmployeeComponent';
-import ButtonToMain from '@/app/Components/buttonBackToMain';
+//import ButtonToMain from '@/app/Components/buttonBackToMain';
 
 
 
@@ -29,7 +29,6 @@ export default function Page() {
     return (
         <div>
         <NewEmployee />
-        <ButtonToMain />
         </div>
     )
 }

@@ -15,27 +15,16 @@ import { useEffect, useState } from 'react';
 import { getAllEmployees } from '@/lib_folder/api';
 import ButtonDelete from '@/app/Components/buttonDeleteComponent';
 import ButtonUpdate from '@/app/Components/buttonUpdateComponent';
-import Link from 'next/link';
+//import Link from 'next/link';
 
 
 
 export default function AllEmployeesTable() {
     const [employees, setEmployees] = useState<Employee[]>([]);
-    const [count, setCount] = useState(0);
-
-    //async function refresh() {
-    //    try {
-    //        const empls: [] = await getAllEmployees();
-    //        setEmployees(empls);
-    //    } catch (e) {
-    //        console.log("Error: ", e);
-    //    }
-    //}
-
-    //useEffect(() =>
-    //{
-    //    //void refresh()
-    //}, [])
+    const [, setCount] = useState(0);
+    const updateCount = () => {
+        setCount(c => c + 1);
+    };
 
     useEffect(() => {
         setEmployees([]);
@@ -61,7 +50,6 @@ export default function AllEmployeesTable() {
         '&:nth-of-type(odd)': {
             backgroundColor: theme.palette.action.hover,
         },
-        // hide last border
         '&:last-child td, &:last-child th': {
             border: 0,
         },
@@ -95,7 +83,7 @@ export default function AllEmployeesTable() {
                             <StyledTableCell align="right">{employee.position}</StyledTableCell>
                             <StyledTableCell align="right">{employee.salary}</StyledTableCell>
                             <StyledTableCell align="right">
-                                <ButtonDelete id={employee.Id} stateChanger={setCount} />
+                                <ButtonDelete id={employee.Id} stateChanger={updateCount} />
 
                                 <ButtonUpdate id={employee.Id} />
 

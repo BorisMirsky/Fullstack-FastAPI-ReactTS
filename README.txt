@@ -30,10 +30,25 @@ activate
 
          Запуск фронтенда
 Переход в папку Fullstack-FastAPI-ReactTS\frontend.
-Правая клавиша \ Open with WS.
-Вызов консоли разработчика "ctrl + `". Выполнить команду 'npm run dev'
+Правая клавиша, выбрать Open with WS.
+Вызов консоли разработчика "ctrl + `". Выполнить команды 'cd frontend_folder', 'npm run dev'
 Приложение открыть по адресу http://localhost:3000.
 
 
 
+                                todo
+
+curl
+-  getAll - ok
+-  getOne - ok
+-  delete - ok
+-  patch -  ok
+-  create - ok
+
+frontend
+-  getAll - ok
+-  getOne -      не передаёт данные на страницу
+-  delete -      удаляет но не обновляет страницу
+-  patch -       не фронтенде отсутствует
+-  create - ok
 

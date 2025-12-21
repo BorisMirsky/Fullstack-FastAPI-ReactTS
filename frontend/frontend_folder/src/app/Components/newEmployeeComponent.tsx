@@ -5,7 +5,8 @@ import { TextField, Button, Box, Typography } from '@mui/material';
 import { createEmployee } from '@/lib_folder/api';
 import { EmployeeRequest } from '@/lib_folder/types';
 import MenuItem from '@mui/material/MenuItem';
-//import { NumberField } from '@base-ui-components/react';
+import ButtonToMain from '@/app/Components/buttonBackToMain';
+
 
 
 export default function NewEmployee () {
@@ -78,11 +79,13 @@ export default function NewEmployee () {
         <Box
           component="form"
           sx={{
-            '& .MuiTextField-root': { ml: 5, mr:5, mt:5, width: '25ch' },
+            //'& .MuiTextField-root': { ml: 5, mr:5, mt:5, width: '25ch' },
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            p: 2,
+            p: 5,
+            m: 10,
+            width: '20%',
             border: '3px solid #ccc',
             borderRadius: '8px',
           }}
@@ -102,6 +105,7 @@ export default function NewEmployee () {
         onChange={(e) => setName(e.target.value)}
         fullWidth
         margin="normal"
+        size="small"
       />
 
       <TextField
@@ -111,6 +115,7 @@ export default function NewEmployee () {
         value={gender}
         onChange={(e) => setGender(e.target.value)}
         fullWidth
+        size="small"
         margin="normal"
             >
            {genders.map((option) => (
@@ -127,6 +132,7 @@ export default function NewEmployee () {
                 value={year}
                 onChange={(e) => setYear(parseInt(e.target.value))}
                 fullWidth
+                size="small"
                 margin="normal"
                 InputProps={{ inputProps: { min: 1955, max: 2007 } }}
         />
@@ -139,6 +145,7 @@ export default function NewEmployee () {
             onChange={(e) => setPosition(e.target.value)}
             fullWidth
             margin="normal"
+            size="small"
             >
                 {positions.map((option) => (
                     <MenuItem key={option.value} value={option.value}>
@@ -154,6 +161,7 @@ export default function NewEmployee () {
             value={salary}
             onChange={(e) => setSalary(parseInt(e.target.value))}
             fullWidth
+            size="small"
             margin="normal"
             InputProps={{ inputProps: { min: 50000, max: 5000000 } }}
         />
@@ -165,7 +173,10 @@ export default function NewEmployee () {
         sx={{ mt: 2 }}
       >
         Создать
-      </Button>
-            </Box>
+    </Button>
+
+    <ButtonToMain/>
+
+    </Box>
     )
 }

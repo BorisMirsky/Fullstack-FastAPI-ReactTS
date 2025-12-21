@@ -22,7 +22,6 @@ export default function ButtonDelete({ id, stateChanger }: ButtonProps1) {
         await deleteEmployee(id);
         var count:number = Math.floor(Math.random() * 1000);
         stateChanger(count);
-        console.log("___button handleDeleteClick___");
     };
 
 
