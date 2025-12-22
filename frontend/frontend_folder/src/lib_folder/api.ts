@@ -54,13 +54,12 @@ export const getEmployee = async (id: string) => {
             }
         })
         .then(data => {
-            //console.log('getOneEmployee data: ', data);
             return data;
         })
         .catch(function (err) {
             console.log('Error: ', err);
         });
-    return response;
+    return response; 
 };
 
 

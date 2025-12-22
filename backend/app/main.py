@@ -51,7 +51,7 @@ def get_all_employees(db: Session = Depends(get_db)):
     return res   
 
 
-
+# get one by id
 @app.get("/allEmployees/id={id_}")
 def get_one_employee(id_:str, db: Session = Depends(get_db)):
     print('get_one_employee ', id_)
