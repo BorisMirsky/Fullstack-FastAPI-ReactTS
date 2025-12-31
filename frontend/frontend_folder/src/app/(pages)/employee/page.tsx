@@ -26,7 +26,13 @@ export default function Page() {
 
     return (
         <div>
-            <div><UpdateEmployee data={empl} /></div>
+            <div><UpdateEmployee
+                name={empl?.name}
+                gender={empl?.gender}
+                birthdate={empl?.birthdate}
+                position={empl?.position}
+                salary={empl?.salary}
+            /></div>
         </div>
     )
 }

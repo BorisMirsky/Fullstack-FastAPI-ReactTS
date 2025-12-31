@@ -8,34 +8,34 @@ import MenuItem from '@mui/material/MenuItem';
 import ButtonToMain from '@/app/Components/buttonBackToMain';
 
 
+//data: Employee
+export default function UpdateEmployee({name, gender, birthdate, position, salary }: Employee) {
+    //const [, setName] = useState('');
+    //const [, setGender] = useState('');
+    //const [, setYear] = useState();
+    //const [, setPosition] = useState('');
+    //const [, setSalary] = useState();
 
-export default function UpdateEmployee(data: Employee) {
-    const [name, setName] = useState('');
-    const [gender, setGender] = useState('');
-    const [year, setYear] = useState(2000);
-    const [position, setPosition] = useState('');
-    const [salary, setSalary] = useState(50000);
 
-
-    function handleClear() {
-        setName('');
-        setGender('');
-        setYear(2000);
-        setPosition('');
-        setSalary(50000);
-    };
+    //function handleClear() {
+    //    setName('');
+    //    setGender('');
+    //    setYear(2000);
+    //    setPosition('');
+    //    setSalary(50000);
+    //};
 
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const request: EmployeeRequest = {
-            name: name,
-            gender: gender,
-            birthYear: year,
-            position: position,
-            salary: salary
-        }
-        handleClear();
+        //const request: EmployeeRequest = {
+        //    name: name,
+        //    gender: gender,
+        //    birthYear: year,
+        //    position: position,
+        //    salary: salary
+        //}
+        //handleClear();
     };
 
     const genders = [
@@ -99,23 +99,23 @@ export default function UpdateEmployee(data: Employee) {
             </Typography>
 
             <TextField
-                label="Name"
+                //label="Name"
                 variant="outlined"
                 type="text"
-                value={data.name}
-                onChange={(e) => setName(e.target.value)}
+                value={name}
+                //onChange={(e) => setName(e.target.value)}
                 fullWidth
                 margin="normal"
                 size="small"
             />
 
             <TextField
-                label="Gender"
+                //label="Gender"
                 variant="outlined"
-                select
+                //select
                 defaultValue="" 
-                value={data.gender}
-                onChange={(e) => setGender(e.target.value)}
+                value={gender}
+                //onChange={(e) => setGender(e.target.value)}
                 fullWidth
                 size="small"
                 margin="normal"
@@ -128,11 +128,11 @@ export default function UpdateEmployee(data: Employee) {
             </TextField>
 
             <TextField
-                label="BirthYear"
+                //label="BirthYear"
                 variant="outlined"
                 type='number'
-                value={data.birthdate}
-                onChange={(e) => setYear(parseInt(e.target.value))}
+                value={birthdate}
+                //onChange={(e) => setYear(parseInt(e.target.value))}
                 fullWidth
                 size="small"
                 margin="normal"
@@ -140,12 +140,12 @@ export default function UpdateEmployee(data: Employee) {
             />
 
             <TextField
-                label="Position"
+                //label="Position"
                 variant="outlined"
-                select
-                defaultValue="" 
-                value={data.position}
-                onChange={(e) => setPosition(e.target.value)}
+                //select
+                defaultValue=""
+                value={position}
+                //onChange={(e) => setPosition(e.target.value)}
                 fullWidth
                 margin="normal"
                 size="small"
@@ -158,11 +158,11 @@ export default function UpdateEmployee(data: Employee) {
             </TextField>
 
             <TextField
-                label="Salary"
+                //label="Salary"
                 variant="outlined"
                 type="number"
-                value={data.salary}
-                onChange={(e) => setSalary(parseInt(e.target.value))}
+                value={salary}
+                //onChange={(e) => setSalary(parseInt(e.target.value))}
                 fullWidth
                 size="small"
                 margin="normal"
