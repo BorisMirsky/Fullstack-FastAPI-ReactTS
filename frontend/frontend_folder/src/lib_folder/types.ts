@@ -12,21 +12,19 @@ export interface ButtonProps1 {
 
 
 export type Employee = {
-    Id: string;
-    name: string;
-    gender: string;
-    birthdate: number;
-    position: string;
-    salary: number;
+    id?: string;
+    name?: string;
+    gender?: string;
+    birthdate?: number;
+    position?: string;
+    salary?: number;
 };
 
 
 export interface EmployeeRequest {
-    name: string;
-    gender: string;
-    birthYear: number;
-    position: string;
-    salary: number,
+    name?: string;
+    gender?: string;
+    birthYear?: number;
+    position?: string;
+    salary?: number,
 }
-
-

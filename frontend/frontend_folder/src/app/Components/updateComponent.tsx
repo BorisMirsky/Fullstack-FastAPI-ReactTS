@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import { TextField, Button, Box, Typography } from '@mui/material';
-//import { createEmployee } from '@/lib_folder/api';
 import { EmployeeRequest } from '@/lib_folder/types';
 import { Employee } from '@/lib_folder/types';
 import MenuItem from '@mui/material/MenuItem';
@@ -36,9 +35,7 @@ export default function UpdateEmployee(data: Employee) {
             position: position,
             salary: salary
         }
-        //createEmployee(request);
         handleClear();
-        //console.log('Form submitted:', { name, gender, year, position, salary });
     };
 
     const genders = [
@@ -80,7 +77,6 @@ export default function UpdateEmployee(data: Employee) {
         <Box
             component="form"
             sx={{
-                //'& .MuiTextField-root': { ml: 5, mr:5, mt:5, width: '25ch' },
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -94,7 +90,11 @@ export default function UpdateEmployee(data: Employee) {
             autoComplete="off"
             onSubmit={handleSubmit}
         >
-            <Typography variant="h5" component="h2" gutterBottom>
+            <Typography
+                variant="h5"
+                component="h2"
+                gutterBottom
+            >
                 Редактировать данные
             </Typography>
 
@@ -107,23 +107,18 @@ export default function UpdateEmployee(data: Employee) {
                 fullWidth
                 margin="normal"
                 size="small"
-                InputProps={{
-                    readOnly: true, 
-                }}
             />
 
             <TextField
                 label="Gender"
                 variant="outlined"
                 select
+                defaultValue="" 
                 value={data.gender}
                 onChange={(e) => setGender(e.target.value)}
                 fullWidth
                 size="small"
                 margin="normal"
-                InputProps={{
-                    readOnly: true
-                }}
             >
                 {genders.map((option) => (
                     <MenuItem key={option.value} value={option.value}>
@@ -141,13 +136,14 @@ export default function UpdateEmployee(data: Employee) {
                 fullWidth
                 size="small"
                 margin="normal"
-                InputProps={{ inputProps: { readOnly: true, min: 1955, max: 2007 } }}
+                //InputProps={{ inputProps: { readOnly: true, min: 1955, max: 2007 } }}
             />
 
             <TextField
                 label="Position"
                 variant="outlined"
                 select
+                defaultValue="" 
                 value={data.position}
                 onChange={(e) => setPosition(e.target.value)}
                 fullWidth
@@ -170,7 +166,7 @@ export default function UpdateEmployee(data: Employee) {
                 fullWidth
                 size="small"
                 margin="normal"
-                InputProps={{ inputProps: { min: 50000, max: 5000000 } }}
+                //InputProps={{ inputProps: { min: 50000, max: 5000000 } }}
             />
 
             <Button
