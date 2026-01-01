@@ -2,28 +2,16 @@
 
 import React, { useState } from 'react';
 import { TextField, Button, Box, Typography } from '@mui/material';
-import { EmployeeRequest } from '@/lib_folder/types';
+import { EmployeeRequest, genders, positions } from '@/lib_folder/types';
 import { Employee } from '@/lib_folder/types';
 import MenuItem from '@mui/material/MenuItem';
 import ButtonToMain from '@/app/Components/buttonBackToMain';
 
 
-//data: Employee
+
 export default function UpdateEmployee({name, gender, birthdate, position, salary }: Employee) {
-    //const [, setName] = useState('');
-    //const [, setGender] = useState('');
-    //const [, setYear] = useState();
-    //const [, setPosition] = useState('');
-    //const [, setSalary] = useState();
-
-
-    //function handleClear() {
-    //    setName('');
-    //    setGender('');
-    //    setYear(2000);
-    //    setPosition('');
-    //    setSalary(50000);
-    //};
+    const [selectedPosition, setPosition] = useState(position);
+    const [selectedSalary, setSalary] = useState(salary);
 
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -35,42 +23,8 @@ export default function UpdateEmployee({name, gender, birthdate, position, salar
         //    position: position,
         //    salary: salary
         //}
-        //handleClear();
+        console.log(name, gender, birthdate, selectedPosition, selectedSalary)
     };
-
-    const genders = [
-        {
-            value: 'female',
-            label: 'female',
-        },
-        {
-            value: 'male',
-            label: 'male',
-        }]
-
-    const positions = [
-        {
-            value: 'clerk',
-            label: 'clerk',
-        },
-        {
-            value: 'vender',
-            label: 'vender',
-        },
-        {
-            value: 'manager',
-            label: 'manager',
-        },
-        {
-            value: 'boss',
-            label: 'boss',
-        },
-        {
-            value: 'whore',
-            label: 'whore',
-        }
-
-    ]
 
 
     return (
@@ -99,23 +53,27 @@ export default function UpdateEmployee({name, gender, birthdate, position, salar
             </Typography>
 
             <TextField
-                //label="Name"
                 variant="outlined"
                 type="text"
-                value={name}
-                //onChange={(e) => setName(e.target.value)}
+                value={name ?? ""}
                 fullWidth
                 margin="normal"
                 size="small"
+                slotProps={{
+                    htmlInput: {
+                        readOnly: true, 
+                    },
+                }}
             />
 
             <TextField
-                //label="Gender"
                 variant="outlined"
-                //select
-                defaultValue="" 
-                value={gender}
-                //onChange={(e) => setGender(e.target.value)}
+                value={gender ?? ""}
+                slotProps={{
+                    htmlInput: {
+                        readOnly: true,
+                    },
+                }}
                 fullWidth
                 size="small"
                 margin="normal"
@@ -128,24 +86,24 @@ export default function UpdateEmployee({name, gender, birthdate, position, salar
             </TextField>
 
             <TextField
-                //label="BirthYear"
                 variant="outlined"
                 type='number'
-                value={birthdate}
-                //onChange={(e) => setYear(parseInt(e.target.value))}
+                value={birthdate ?? ""}
+                slotProps={{
+                    htmlInput: {
+                        readOnly: true,
+                    },
+                }}
                 fullWidth
                 size="small"
                 margin="normal"
-                //InputProps={{ inputProps: { readOnly: true, min: 1955, max: 2007 } }}
             />
 
             <TextField
-                //label="Position"
                 variant="outlined"
-                //select
-                defaultValue=""
-                value={position}
-                //onChange={(e) => setPosition(e.target.value)}
+                select
+                value={selectedPosition ?? ""}
+                onChange={(e) => setPosition(e.target.value)}
                 fullWidth
                 margin="normal"
                 size="small"
@@ -158,15 +116,15 @@ export default function UpdateEmployee({name, gender, birthdate, position, salar
             </TextField>
 
             <TextField
-                //label="Salary"
                 variant="outlined"
                 type="number"
-                value={salary}
-                //onChange={(e) => setSalary(parseInt(e.target.value))}
+                value={selectedSalary ?? 0}
+                onChange={(e) => setSalary(parseInt(e.target.value))}
                 fullWidth
                 size="small"
                 margin="normal"
-                //InputProps={{ inputProps: { min: 50000, max: 5000000 } }}
+                InputProps={{ inputProps: { min: 50000, max: 5000000 } }}
+                //slotProps={{input: {min: 50000, max: 5000000,},}}
             />
 
             <Button

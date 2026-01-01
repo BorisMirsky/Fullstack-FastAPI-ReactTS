@@ -11,6 +11,41 @@ export interface ButtonProps1 {
 }
 
 
+export const genders = [
+    {
+        value: 'female',
+        label: 'female',
+    },
+    {
+        value: 'male',
+        label: 'male',
+    }]
+
+export const positions = [
+    {
+        value: 'clerk',
+        label: 'clerk',
+    },
+    {
+        value: 'vender',
+        label: 'vender',
+    },
+    {
+        value: 'manager',
+        label: 'manager',
+    },
+    {
+        value: 'boss',
+        label: 'boss',
+    },
+    {
+        value: 'whore',
+        label: 'whore',
+    }
+
+]
+
+
 export type Employee = {
     id?: string;
     name?: string;

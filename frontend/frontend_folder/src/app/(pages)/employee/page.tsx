@@ -18,21 +18,22 @@ export default function Page() {
         const getEmpl = async () => {
             const responce = await getEmployee(id);
             setEmpl(responce.content);
-            //console.log('responce.content ', responce.content);
         };
         getEmpl();
-    });  
+    }, [id, empl?.position, empl?.salary]);  
 
 
     return (
         <div>
-            <div><UpdateEmployee
-                name={empl?.name}
-                gender={empl?.gender}
-                birthdate={empl?.birthdate}
-                position={empl?.position}
-                salary={empl?.salary}
-            /></div>
+            <div>
+                <UpdateEmployee
+                    name={empl?.name}
+                    gender={empl?.gender}
+                    birthdate={empl?.birthdate}
+                    position={empl?.position}
+                    salary={empl?.salary}
+                />
+            </div>
         </div>
     )
 }
