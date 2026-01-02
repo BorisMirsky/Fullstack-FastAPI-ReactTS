@@ -1,6 +1,6 @@
 ﻿'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField, Button, Box, Typography } from '@mui/material';
 import { EmployeeRequest, genders, positions } from '@/lib_folder/types';
 import { Employee } from '@/lib_folder/types';
@@ -13,6 +13,13 @@ export default function UpdateEmployee({name, gender, birthdate, position, salar
     const [selectedPosition, setPosition] = useState(position);
     const [selectedSalary, setSalary] = useState(salary);
 
+    useEffect(() => {
+        setPosition(position);
+        console.log("name, gender, birthdate, position, salary", name, gender, birthdate, position, salary);
+        //console.log('selectedPosition ', selectedPosition);
+        //console.log('position ', position);
+        //console.log('selectedSalary ', selectedSalary);
+    }, [selectedPosition, selectedSalary]);  
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -102,7 +109,8 @@ export default function UpdateEmployee({name, gender, birthdate, position, salar
             <TextField
                 variant="outlined"
                 select
-                value={selectedPosition ?? ""}
+                //value={selectedPosition! ? selectedPosition : position}
+                //value={selectedPosition ?? ""}
                 onChange={(e) => setPosition(e.target.value)}
                 fullWidth
                 margin="normal"
