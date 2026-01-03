@@ -54,7 +54,6 @@ def get_all_employees(db: Session = Depends(get_db)):
 # get one by id
 @app.get("/allEmployees/id={id_}")
 def get_one_employee(id_:str, db: Session = Depends(get_db)):
-    print('get_one_employee ', id_)
     empl = db.query(Employee).filter(Employee.Id == id_).first()
     if empl==None:  
         return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})
@@ -87,8 +86,8 @@ def create_employee(data = Body(), db: Session = Depends(get_db)):
     return result
 
 
-@app.patch("/patchEmployee/{id_}")
-def put_employee(id_, data  = Body(), db: Session = Depends(get_db)):
+@app.patch("/patch/id={id_}")
+def patch_employee(id_, data  = Body(), db: Session = Depends(get_db)):
     empl = db.query(Employee).filter(Employee.Id == id_).first()
     if empl==None:  
         return JSONResponse(status_code=404, content={ "message": "Пользователь не найден"})
@@ -98,6 +97,7 @@ def put_employee(id_, data  = Body(), db: Session = Depends(get_db)):
     db.commit()
     db.refresh(empl)
     result = {"status":"OK", "code":200, "employee": empl}
+    print('result ', result)
     return result
 
 

@@ -16,7 +16,6 @@ export default function NewEmployee () {
     const [position, setPosition] = useState('');
     const [salary, setSalary] = useState(50000);
 
-    //const handleClear = () => {
     function handleClear() {
         setName('');
         setGender(''); 

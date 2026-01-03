@@ -1,5 +1,5 @@
 ﻿
-import { EmployeeRequest } from '@/lib_folder/types';
+import { EmployeeRequest, PatchEmployeeRequest } from '@/lib_folder/types';
 
 
 export const getAllEmployees = async () => {
@@ -78,7 +78,7 @@ export const deleteEmployee = async (id: string) => {
 };
 
 
-export const createEmployee = async (emplRequest: EmployeeRequest) => {
+export const createEmployee = async (request: EmployeeRequest) => {
     await fetch("http://127.0.0.1:8000/newEmployee/", {
         method: 'POST',
         headers: {
@@ -88,6 +88,23 @@ export const createEmployee = async (emplRequest: EmployeeRequest) => {
             "Access-Control-Allow-Methods": 'POST',
         },
         mode: 'cors',
-        body: JSON.stringify(emplRequest)
+        body: JSON.stringify(request)
+    }).catch(error => console.log("createEmployeeError: ", error));
+};
+
+
+export const patchEmployee = async (request: PatchEmployeeRequest) => {
+    const id: string = request.id;
+    const url = `http://127.0.0.1:8000/patch/id=${id}`;
+    await fetch(url, {
+        method: 'PATCH',
+        headers: {
+            'Content-type': 'application/json',
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Allow-Methods": 'PATCH',
+        },
+        mode: 'cors',
+        body: JSON.stringify(request)
     }).catch(error => console.log("createEmployeeError: ", error));
 };

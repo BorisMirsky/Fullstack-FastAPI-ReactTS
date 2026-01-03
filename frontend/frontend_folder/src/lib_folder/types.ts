@@ -47,7 +47,7 @@ export const positions = [
 
 
 export type Employee = {
-    id?: string;
+    id: string;
     name?: string;
     gender?: string;
     birthdate?: number;
@@ -60,6 +60,13 @@ export interface EmployeeRequest {
     name?: string;
     gender?: string;
     birthYear?: number;
+    position?: string;
+    salary?: number,
+}
+
+
+export interface PatchEmployeeRequest {
+    id: string;
     position?: string;
     salary?: number,
 }

@@ -2,35 +2,34 @@
 
 import React, { useState, useEffect } from 'react';
 import { TextField, Button, Box, Typography } from '@mui/material';
-import { EmployeeRequest, genders, positions } from '@/lib_folder/types';
-import { Employee } from '@/lib_folder/types';
+import { Employee,  PatchEmployeeRequest, genders, positions } from '@/lib_folder/types';
+import { patchEmployee } from '@/lib_folder/api';
 import MenuItem from '@mui/material/MenuItem';
 import ButtonToMain from '@/app/Components/buttonBackToMain';
 
 
 
-export default function UpdateEmployee({name, gender, birthdate, position, salary }: Employee) {
+export default function UpdateEmployee({id, name, gender, birthdate, position, salary }: Employee) {
     const [selectedPosition, setPosition] = useState(position);
     const [selectedSalary, setSalary] = useState(salary);
 
-    useEffect(() => {
-        setPosition(position);
-        console.log("name, gender, birthdate, position, salary", name, gender, birthdate, position, salary);
-        //console.log('selectedPosition ', selectedPosition);
-        //console.log('position ', position);
-        //console.log('selectedSalary ', selectedSalary);
-    }, [selectedPosition, selectedSalary]);  
+    //useEffect(() => {
+    //    //setPosition(position);
+    //    console.log("name, gender, birthdate, position, salary", name, gender, birthdate, position, salary);
+    //    //console.log('selectedPosition ', selectedPosition);
+    //    //console.log('position ', position);
+    //    //console.log('selectedSalary ', selectedSalary);
+    //}, [selectedPosition, selectedSalary]);  
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        //const request: EmployeeRequest = {
-        //    name: name,
-        //    gender: gender,
-        //    birthYear: year,
-        //    position: position,
-        //    salary: salary
-        //}
-        console.log(name, gender, birthdate, selectedPosition, selectedSalary)
+        const request: PatchEmployeeRequest = {
+            id: id,
+            position: selectedPosition,
+            salary: selectedSalary
+        }
+        patchEmployee(request);
+        //console.log(name, gender, birthdate, selectedPosition, selectedSalary)
     };
 
 
@@ -110,7 +109,7 @@ export default function UpdateEmployee({name, gender, birthdate, position, salar
                 variant="outlined"
                 select
                 //value={selectedPosition! ? selectedPosition : position}
-                //value={selectedPosition ?? ""}
+                value={selectedPosition ?? ""}
                 onChange={(e) => setPosition(e.target.value)}
                 fullWidth
                 margin="normal"

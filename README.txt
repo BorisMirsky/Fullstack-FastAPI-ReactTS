@@ -47,9 +47,9 @@ curl
 
 frontend
 -  getAll - ok
--  getOne -   position & salary - нужны стартовые значения в выпадающих списках 
--  delete -      удаляет но не обновляет страницу
--  patch -       нет ничего
+-  getOne - position & salary - нужны стартовые значения в выпадающих списках 
+-  delete - удаляет но не обновляет страницу
+-  patch -  ok
 -  create - ok
 
 

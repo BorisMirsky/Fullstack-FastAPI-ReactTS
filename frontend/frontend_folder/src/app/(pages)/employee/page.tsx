@@ -27,6 +27,7 @@ export default function Page() {
         <div>
             <div>
                 <UpdateEmployee
+                    id={id}
                     name={empl?.name}
                     gender={empl?.gender}
                     birthdate={empl?.birthdate}
