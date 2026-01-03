@@ -2,12 +2,12 @@
 import { Dispatch, SetStateAction } from "react";
 
 export interface ButtonProps {
-    id: string
+    id?: string;
 }
 
 export interface ButtonProps1 {
-    id: string
-    stateChanger: Dispatch<SetStateAction<number>>
+    id?: string;
+    stateChanger: Dispatch<SetStateAction<number>>;
 }
 
 
@@ -47,7 +47,7 @@ export const positions = [
 
 
 export type Employee = {
-    id: string;
+    id?: string;
     name?: string;
     gender?: string;
     birthdate?: number;

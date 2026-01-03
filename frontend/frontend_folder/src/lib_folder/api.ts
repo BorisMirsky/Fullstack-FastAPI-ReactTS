@@ -63,7 +63,8 @@ export const getEmployee = async (id: string) => {
 };
 
 
-export const deleteEmployee = async (id: string) => {
+export const deleteEmployee = async (id?: string) => {
+
     const url = `http://127.0.0.1:8000/delete/id=${id}`;
     await fetch(url, {
         headers: {

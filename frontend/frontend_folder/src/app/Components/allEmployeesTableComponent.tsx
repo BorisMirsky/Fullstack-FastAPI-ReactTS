@@ -15,8 +15,6 @@ import { useEffect, useState } from 'react';
 import { getAllEmployees } from '@/lib_folder/api';
 import ButtonDelete from '@/app/Components/buttonDeleteComponent';
 import ButtonUpdate from '@/app/Components/buttonUpdateComponent';
-//import Link from 'next/link';
-
 
 
 export default function AllEmployeesTable() {
@@ -83,10 +81,8 @@ export default function AllEmployeesTable() {
                             <StyledTableCell align="right">{employee.position}</StyledTableCell>
                             <StyledTableCell align="right">{employee.salary}</StyledTableCell>
                             <StyledTableCell align="right">
-                                <ButtonDelete id={employee.Id} stateChanger={updateCount} />
-
-                                <ButtonUpdate id={employee.Id} />
-
+                                <ButtonDelete id={employee.id} stateChanger={updateCount} />
+                                <ButtonUpdate id={employee.id} />
                             </StyledTableCell>
                         </StyledTableRow>
                     ))}

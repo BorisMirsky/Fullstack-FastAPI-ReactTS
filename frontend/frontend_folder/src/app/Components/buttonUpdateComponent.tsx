@@ -20,6 +20,7 @@ export default function ButtonUpdate({ id }: ButtonProps) {
     }, [id])   
 
     function handleClick() {
+        console.log('ButtonUpdate ', id)
         router.push('/employee?id=' + id);
     }
 

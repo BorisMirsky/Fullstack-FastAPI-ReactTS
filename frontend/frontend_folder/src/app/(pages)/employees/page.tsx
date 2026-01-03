@@ -6,7 +6,6 @@ import AllEmployeesTable from '@/app/Components/allEmployeesTableComponent';
 import ButtonCreate from '@/app/Components/buttonCreateComponent';
 
 
-// AllEmployees
 export default function Page() {
     const [ , setLoading] = useState(false)
 
