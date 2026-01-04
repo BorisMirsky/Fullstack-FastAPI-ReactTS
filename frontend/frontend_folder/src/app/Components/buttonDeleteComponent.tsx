@@ -17,11 +17,13 @@ export default function ButtonDelete({ id, stateChanger }: ButtonProps1) {
         }
     }, [id]);
 
+
     //var count: number = Math.floor(Math.random() * 1000);
     const handleClick = async () => {
         await deleteEmployee(id);
-        var count:number = Math.floor(Math.random() * 1000);
-        stateChanger(count);
+        //var count: number = Math.floor(Math.random() * 1000);
+        //console.log("count from ButtonDelete ", count);
+        stateChanger(1);
     };
 
 

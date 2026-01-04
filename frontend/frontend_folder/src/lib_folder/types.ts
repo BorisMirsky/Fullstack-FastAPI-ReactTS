@@ -66,7 +66,7 @@ export interface EmployeeRequest {
 
 
 export interface PatchEmployeeRequest {
-    id: string;
+    id?: string;
     position?: string;
     salary?: number,
 }

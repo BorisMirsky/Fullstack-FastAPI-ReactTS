@@ -81,8 +81,8 @@ export default function AllEmployeesTable() {
                             <StyledTableCell align="right">{employee.position}</StyledTableCell>
                             <StyledTableCell align="right">{employee.salary}</StyledTableCell>
                             <StyledTableCell align="right">
-                                <ButtonDelete id={employee.id} stateChanger={updateCount} />
-                                <ButtonUpdate id={employee.id} />
+                                <ButtonDelete id={employee.Id} stateChanger={updateCount} />
+                                <ButtonUpdate id={employee.Id} />
                             </StyledTableCell>
                         </StyledTableRow>
                     ))}

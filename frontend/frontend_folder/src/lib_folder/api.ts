@@ -95,8 +95,10 @@ export const createEmployee = async (request: EmployeeRequest) => {
 
 
 export const patchEmployee = async (request: PatchEmployeeRequest) => {
-    const id: string = request.id;
-    const url = `http://127.0.0.1:8000/patch/id=${id}`;
+    //console.log("patchEmployee, request.Id ", request.id);
+    //console.log("patchEmployee, request.Id ", request.position);
+    //console.log("patchEmployee, request.Id ", request.salary);
+    const url = `http://127.0.0.1:8000/patch/id=${request.id}`;
     await fetch(url, {
         method: 'PATCH',
         headers: {

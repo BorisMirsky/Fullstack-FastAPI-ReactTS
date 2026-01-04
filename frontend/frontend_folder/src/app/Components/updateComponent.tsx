@@ -29,7 +29,6 @@ export default function UpdateEmployee({id, name, gender, birthdate, position, s
             salary: selectedSalary
         }
         patchEmployee(request);
-        //console.log(name, gender, birthdate, selectedPosition, selectedSalary)
     };
 
 
