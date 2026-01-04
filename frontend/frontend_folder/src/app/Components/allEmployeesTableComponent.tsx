@@ -19,7 +19,7 @@ import ButtonUpdate from '@/app/Components/buttonUpdateComponent';
 
 export default function AllEmployeesTable() {
     const [employees, setEmployees] = useState<Employee[]>([]);
-    const [, setCount] = useState(0);
+    const [count, setCount] = useState<number>(0);
     const updateCount = () => {
         setCount(c => c + 1);
     };
@@ -31,7 +31,7 @@ export default function AllEmployeesTable() {
             setEmployees(responce);
         }
         getEmployees();
-    }, []);
+    }, [count]);
 
     const StyledTableCell = styled(TableCell)(({ theme }) => ({
         [`&.${tableCellClasses.head}`]: {
@@ -91,14 +91,3 @@ export default function AllEmployeesTable() {
         </TableContainer>
     )
 }
-
-
-
-//<Link
-//    href={{
-//        pathname: "employee",
-//        query: { id: employee.Id }
-//    }}
-//>
-//    <ButtonUpdate id={employee.Id} />
-//</Link>

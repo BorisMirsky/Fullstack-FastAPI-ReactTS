@@ -1,5 +1,5 @@
 ﻿
-import { Dispatch, SetStateAction } from "react";
+//import { Dispatch, SetStateAction } from "react";
 
 export interface ButtonProps {
     id?: string;
@@ -7,7 +7,8 @@ export interface ButtonProps {
 
 export interface ButtonProps1 {
     id?: string;
-    stateChanger: Dispatch<SetStateAction<number>>;
+    //stateChanger: Dispatch<SetStateAction<number>>;
+    stateChanger: () => void;
 }
 
 

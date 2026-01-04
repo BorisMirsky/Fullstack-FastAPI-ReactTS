@@ -48,9 +48,9 @@ curl
 frontend
 -  getAll - ok
 -  getOne - position & salary - нужны стартовые значения в выпадающих списках 
--  delete - удаляет но не обновляет страницу
+-  delete - ok
 -  patch -  Сделать обработку невведённого значения (одного из двух. Хотя это вытекает из первой проблемы)
 -  create - ok
 
 AllEmployeesTableComponent - id\Id - не понимаю ошибки
-
+InputProps in UpdateComponent is deprecated
