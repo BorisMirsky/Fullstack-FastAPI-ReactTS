@@ -47,10 +47,15 @@ curl
 
 frontend
 -  getAll - ok
--  getOne - position & salary - нужны стартовые значения в выпадающих списках 
+-  getOne - ok 
 -  delete - ok
--  patch -  Сделать обработку невведённого значения (одного из двух. Хотя это вытекает из первой проблемы)
+-  patch -  ok
 -  create - ok
 
-AllEmployeesTableComponent - id\Id - не понимаю ошибки
-InputProps in UpdateComponent is deprecated
+
+              Некритично:
+- AllEmployeesTableComponent - id\Id - не понимаю ошибки
+- InputProps in UpdateComponent is deprecated   (в одном месте только)
+- При создании нового сотрудника дефолтные убрать 50000 и год рождения ?
+- все параметры одного юзера не передавать а получать внутри
+

@@ -1,25 +1,32 @@
-﻿'use client'
+﻿/* eslint-disable @typescript-eslint/no-unused-expressions */
+'use client'
 
 import React, { useState, useEffect } from 'react';
 import { TextField, Button, Box, Typography } from '@mui/material';
 import { Employee,  PatchEmployeeRequest, genders, positions } from '@/lib_folder/types';
-import { patchEmployee } from '@/lib_folder/api';
+import { patchEmployee, getEmployee } from '@/lib_folder/api';
 import MenuItem from '@mui/material/MenuItem';
 import ButtonToMain from '@/app/Components/buttonBackToMain';
 
 
 
+//export default function UpdateEmployee({id, name, gender, birthdate, position, salary }: Employee) {
 export default function UpdateEmployee({id, name, gender, birthdate, position, salary }: Employee) {
-    const [selectedPosition, setPosition] = useState(position);
-    const [selectedSalary, setSalary] = useState(salary);
+    const [selectedPosition, setPosition] = useState<string|undefined>("");
+    const [selectedSalary, setSalary] = useState<number|undefined>(0);
 
-    //useEffect(() => {
-    //    //setPosition(position);
-    //    console.log("name, gender, birthdate, position, salary", name, gender, birthdate, position, salary);
-    //    //console.log('selectedPosition ', selectedPosition);
-    //    //console.log('position ', position);
-    //    //console.log('selectedSalary ', selectedSalary);
-    //}, [selectedPosition, selectedSalary]);  
+    useEffect(() => {
+        const getData = async () => {
+            const response = await getEmployee(id!);
+            setPosition(response.content.position);
+            setSalary(response.content.salary);
+        }
+        getData();
+    }, []);
+
+    const handlePositionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setPosition(event.target.value);
+    };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -107,9 +114,8 @@ export default function UpdateEmployee({id, name, gender, birthdate, position, s
             <TextField
                 variant="outlined"
                 select
-                //value={selectedPosition! ? selectedPosition : position}
                 value={selectedPosition ?? ""}
-                onChange={(e) => setPosition(e.target.value)}
+                onChange={handlePositionChange}
                 fullWidth
                 margin="normal"
                 size="small"
