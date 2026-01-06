@@ -1,4 +1,6 @@
 ﻿/* eslint-disable @typescript-eslint/no-unused-expressions */
+
+
 'use client'
 
 import React, { useState, useEffect } from 'react';
@@ -7,11 +9,15 @@ import { Employee,  PatchEmployeeRequest, genders, positions } from '@/lib_folde
 import { patchEmployee, getEmployee } from '@/lib_folder/api';
 import MenuItem from '@mui/material/MenuItem';
 import ButtonToMain from '@/app/Components/buttonBackToMain';
+import { Alert } from '@mui/material';
+
 
 
 export default function UpdateEmployee({id, name, gender, birthdate }: Employee) {
     const [selectedPosition, setPosition] = useState<string|undefined>("");
     const [selectedSalary, setSalary] = useState<number|undefined>(0);
+    const [salaryError, setSalaryError] = useState(false);
+    const [salaryHelperText, setSalaryHelperText] = useState('');
 
 
     useEffect(() => {
@@ -34,10 +40,28 @@ export default function UpdateEmployee({id, name, gender, birthdate }: Employee)
             position: selectedPosition,
             salary: selectedSalary
         }
-        patchEmployee(request);
+        if (salaryError == true) {
+            alert("Выход за рамки '50k < Зарплата < 500k'");
+        }
+        else {
+            patchEmployee(request);
+        }
     };
 
-
+    const handleSalary = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const s: number = parseInt(event.target.value);
+        setSalary(s);
+        if (s < 50000) {
+            setSalaryError(true);
+            setSalaryHelperText("not enough, increase more");
+        } else if (s > 500000) {
+            setSalaryError(true);
+            setSalaryHelperText("too much");
+        } else {
+            setSalaryError(false);
+            setSalaryHelperText("");
+        }
+    };
 
     return (
         <Box
@@ -63,7 +87,7 @@ export default function UpdateEmployee({id, name, gender, birthdate }: Employee)
                 gutterBottom
                 align="center"
             >
-                Для редактирования доступны поля 'Должность' и 'Зарплата'
+                <p>Можно редактировать поля 'Должность' и 'Зарплата'</p>
             </Typography>
             <TextField
                 variant="outlined"
@@ -117,15 +141,17 @@ export default function UpdateEmployee({id, name, gender, birthdate }: Employee)
             </TextField>
 
             <TextField
+                required={true}
+                label="Salary"
                 variant="outlined"
                 type="number"
                 value={selectedSalary ?? 0}
-                onChange={(e) => setSalary(parseInt(e.target.value))}
+                onChange={(e) => handleSalary(e)}
+                error={salaryError}
                 fullWidth
                 size="small"
                 margin="normal"
-                InputProps={{ inputProps: { min: 50000, max: 5000000 } }}
-                //slotProps={{input: {min: 50000, max: 5000000,},}}
+                helperText={salaryHelperText} 
             />
 
             <Button

@@ -44,7 +44,6 @@ export default function NewEmployee () {
 
     const handleSalary = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const s: number = parseInt(event.target.value);
-        setSalary(s);
         if (s < 50000) {
             setSalaryError(true);
             setSalaryHelperText("not enough, increase more");
@@ -55,19 +54,28 @@ export default function NewEmployee () {
             setSalaryError(false);
             setSalaryHelperText("");
         }
+        setSalary(s);
     };
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {  
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const request: EmployeeRequest = {
             name: name,
             gender: gender,
             birthYear: year,
             position: position,
-            salary: salary 
+            salary: salary
         }
-        createEmployee(request);
-        handleClear();
+        if (salaryError == true) {
+            alert("Зарплата должна быть в рамках 50k - 500k")
+        }
+        else if (yearError == true) {
+            alert("Год рождения должен быть в рамках 1955 - 2005")
+        }
+        else {
+            createEmployee(request);
+            handleClear();
+        }
     };
 
 

@@ -37,28 +37,8 @@ activate
 
 
                                 todo
+1. AllEmployeesTableComponent: 'id\Id' - не понимаю ошибки
+2. нет обработки ошибки 'переход на страницу отсутствующего юзера'
 
-curl
--  getAll - ok
--  getOne - ok
--  delete - ok
--  patch -  ok
--  create - ok
-
-frontend
--  getAll - ok
--  getOne - ok 
--  delete - ok
--  patch -  ok
--  create - ok
-
-
-   
-- AllEmployeesTableComponent - id\Id - не понимаю ошибки
-- InputProps (UpdateComponent, NewEmployee) is deprecated       Уйдёт при настроенной валидации
-- Валидация введённых данных на фронтенде
-  - при заполнении отдельных полей
-  - при отправке всей формы
-  - при незаполненных полях
 
 
