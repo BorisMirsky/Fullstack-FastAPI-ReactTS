@@ -3,27 +3,59 @@
 import React, { useState } from 'react';
 import { TextField, Button, Box, Typography } from '@mui/material';
 import { createEmployee } from '@/lib_folder/api';
-import { EmployeeRequest } from '@/lib_folder/types';
+import { EmployeeRequest, genders, positions } from '@/lib_folder/types';
 import MenuItem from '@mui/material/MenuItem';
 import ButtonToMain from '@/app/Components/buttonBackToMain';
-
 
 
 export default function NewEmployee () {
     const [name, setName] = useState('');
     const [gender, setGender] = useState('');
-    const [year, setYear] = useState(2000);
+    const [year, setYear] = useState<number | undefined>(0);
     const [position, setPosition] = useState('');
-    const [salary, setSalary] = useState(50000);
+    const [salary, setSalary] = useState<number | undefined>(undefined);
+    const [yearError, setYearError] = useState(false);
+    const [salaryError, setSalaryError] = useState(false);
+    const [yearHelperText, setYearHelperText] = useState('');
+    const [salaryHelperText, setSalaryHelperText] = useState('');
 
     function handleClear() {
         setName('');
         setGender(''); 
-        setYear(2000);
+        setYear(undefined);
         setPosition('');
-        setSalary(50000); 
+        setSalary(undefined); 
     };
 
+    const handleBirthYear = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const year: number = parseInt(event.target.value);
+        setYear(year);
+        if (year < 1955) {
+            setYearError(true); 
+            setYearHelperText("too old");
+        } else if (year > 2005) {
+            setYearError(true); 
+            setYearHelperText("too young");
+        } else {
+            setYearError(false);
+            setYearHelperText("");
+        }
+    };
+
+    const handleSalary = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const s: number = parseInt(event.target.value);
+        setSalary(s);
+        if (s < 50000) {
+            setSalaryError(true);
+            setSalaryHelperText("not enough, increase more");
+        } else if (s > 500000) {
+            setSalaryError(true);
+            setSalaryHelperText("too much");
+        } else {
+            setSalaryError(false);
+            setSalaryHelperText("");
+        }
+    };
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {  
         event.preventDefault();
@@ -32,53 +64,18 @@ export default function NewEmployee () {
             gender: gender,
             birthYear: year,
             position: position,
-            salary: salary
+            salary: salary 
         }
         createEmployee(request);
         handleClear();
-        //console.log('Form submitted:', { name, gender, year, position, salary });
     };
 
-    const genders = [
-        {
-            value: 'female',
-            label: 'female',
-        },
-        {
-            value: 'male',
-            label: 'male',
-        }]
-
-    const positions = [
-        {
-            value: 'clerk',
-            label: 'clerk',
-        },
-        {
-            value: 'vender',
-            label: 'vender',
-        },
-        {
-            value: 'manager',
-            label: 'manager',
-        },
-        {
-            value: 'boss',
-            label: 'boss',
-        },
-        {
-            value: 'whore',
-            label: 'whore',
-        }
-
-    ]
 
 
     return (
         <Box
           component="form"
           sx={{
-            //'& .MuiTextField-root': { ml: 5, mr:5, mt:5, width: '25ch' },
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
@@ -97,6 +94,7 @@ export default function NewEmployee () {
       </Typography>
 
       <TextField
+        required={true}
         label="Name"
         variant="outlined"
         type="text"
@@ -107,7 +105,8 @@ export default function NewEmployee () {
         size="small"
       />
 
-      <TextField
+    <TextField
+        required={true}
         label="Gender"
         variant="outlined"
         select
@@ -124,19 +123,22 @@ export default function NewEmployee () {
         ))}
         </TextField>
 
-        <TextField
-                label="BirthYear"
-                variant="outlined"
-                type='number'
-                value={year}
-                onChange={(e) => setYear(parseInt(e.target.value))}
-                fullWidth
-                size="small"
-                margin="normal"
-                InputProps={{ inputProps: { min: 1955, max: 2007 } }}
+    <TextField
+        required
+        label="BirthYear"
+        variant="outlined"
+        type='number'
+        value={year ?? 0}
+        onChange={(e) => handleBirthYear(e)}
+        error={yearError}
+        fullWidth
+        size="small"
+        margin="normal"
+        helperText={yearHelperText} 
         />
 
         <TextField
+            required={true}
             label="Position"
             variant="outlined"
             select
@@ -154,15 +156,17 @@ export default function NewEmployee () {
             </TextField>
 
         <TextField
+            required={true}
             label="Salary"
             variant="outlined"
             type="number"
-            value={salary}
-            onChange={(e) => setSalary(parseInt(e.target.value))}
+            value={salary ?? 0}
+            onChange={(e) => handleSalary(e)}
+            error={salaryError}
             fullWidth
             size="small"
             margin="normal"
-            InputProps={{ inputProps: { min: 50000, max: 5000000 } }}
+            helperText={salaryHelperText} 
         />
 
       <Button

@@ -64,7 +64,6 @@ export const getEmployee = async (id: string) => {
 
 
 export const deleteEmployee = async (id?: string) => {
-
     const url = `http://127.0.0.1:8000/delete/id=${id}`;
     await fetch(url, {
         headers: {
@@ -95,9 +94,6 @@ export const createEmployee = async (request: EmployeeRequest) => {
 
 
 export const patchEmployee = async (request: PatchEmployeeRequest) => {
-    //console.log("patchEmployee, request.Id ", request.id);
-    //console.log("patchEmployee, request.Id ", request.position);
-    //console.log("patchEmployee, request.Id ", request.salary);
     const url = `http://127.0.0.1:8000/patch/id=${request.id}`;
     await fetch(url, {
         method: 'PATCH',

@@ -31,8 +31,6 @@ export default function Page() {
                     name={empl?.name}
                     gender={empl?.gender}
                     birthdate={empl?.birthdate}
-                    position={empl?.position}
-                    salary={empl?.salary}
                 />
             </div>
         </div>

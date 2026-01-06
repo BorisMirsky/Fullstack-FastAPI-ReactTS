@@ -9,11 +9,10 @@ import MenuItem from '@mui/material/MenuItem';
 import ButtonToMain from '@/app/Components/buttonBackToMain';
 
 
-
-//export default function UpdateEmployee({id, name, gender, birthdate, position, salary }: Employee) {
-export default function UpdateEmployee({id, name, gender, birthdate, position, salary }: Employee) {
+export default function UpdateEmployee({id, name, gender, birthdate }: Employee) {
     const [selectedPosition, setPosition] = useState<string|undefined>("");
     const [selectedSalary, setSalary] = useState<number|undefined>(0);
+
 
     useEffect(() => {
         const getData = async () => {
@@ -39,6 +38,7 @@ export default function UpdateEmployee({id, name, gender, birthdate, position, s
     };
 
 
+
     return (
         <Box
             component="form"
@@ -56,14 +56,15 @@ export default function UpdateEmployee({id, name, gender, birthdate, position, s
             autoComplete="off"
             onSubmit={handleSubmit}
         >
+
             <Typography
                 variant="h5"
-                component="h2"
+                component="h3"
                 gutterBottom
+                align="center"
             >
-                Редактировать данные
+                Для редактирования доступны поля 'Должность' и 'Зарплата'
             </Typography>
-
             <TextField
                 variant="outlined"
                 type="text"
@@ -71,21 +72,13 @@ export default function UpdateEmployee({id, name, gender, birthdate, position, s
                 fullWidth
                 margin="normal"
                 size="small"
-                slotProps={{
-                    htmlInput: {
-                        readOnly: true, 
-                    },
-                }}
+                disabled
             />
 
             <TextField
                 variant="outlined"
                 value={gender ?? ""}
-                slotProps={{
-                    htmlInput: {
-                        readOnly: true,
-                    },
-                }}
+                disabled
                 fullWidth
                 size="small"
                 margin="normal"
@@ -101,11 +94,7 @@ export default function UpdateEmployee({id, name, gender, birthdate, position, s
                 variant="outlined"
                 type='number'
                 value={birthdate ?? ""}
-                slotProps={{
-                    htmlInput: {
-                        readOnly: true,
-                    },
-                }}
+                disabled
                 fullWidth
                 size="small"
                 margin="normal"
