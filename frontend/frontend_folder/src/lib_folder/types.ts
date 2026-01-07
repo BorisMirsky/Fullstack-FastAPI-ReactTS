@@ -46,7 +46,7 @@ export const positions = [
 
 
 export type Employee = {
-    id?: string;
+    Id?: string;
     name?: string;
     gender?: string;
     birthdate?: number;

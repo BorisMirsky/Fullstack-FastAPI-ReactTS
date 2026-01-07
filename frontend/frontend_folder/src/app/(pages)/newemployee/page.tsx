@@ -19,9 +19,7 @@ export default function Page() {
         }
     }
 
-
     useEffect(() => { void refresh() }, [])
-
 
     return (
         <div>

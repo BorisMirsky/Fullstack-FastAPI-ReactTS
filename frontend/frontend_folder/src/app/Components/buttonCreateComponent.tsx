@@ -13,7 +13,6 @@ export default function ButtonCreate() {
         <Button
             variant="contained"
             size="small"
-            //color="error"
             onClick={() => router.push('/newemployee')}
             sx={{ ml: 5, mt: 5, backgroundColor: 'blue'}} 
         >

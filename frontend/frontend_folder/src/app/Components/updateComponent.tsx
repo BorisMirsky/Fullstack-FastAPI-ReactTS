@@ -9,8 +9,6 @@ import { Employee,  PatchEmployeeRequest, genders, positions } from '@/lib_folde
 import { patchEmployee, getEmployee } from '@/lib_folder/api';
 import MenuItem from '@mui/material/MenuItem';
 import ButtonToMain from '@/app/Components/buttonBackToMain';
-import { Alert } from '@mui/material';
-
 
 
 export default function UpdateEmployee({id, name, gender, birthdate }: Employee) {

@@ -8,7 +8,6 @@ import { useRouter } from 'next/navigation';
 export default function ButtonToMain() {
     const router = useRouter();
 
-
     return (
         <Button
             variant="contained"
